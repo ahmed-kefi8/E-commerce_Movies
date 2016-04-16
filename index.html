@@ -1,26 +1,64 @@
 <!DOCTYPE html>
 
-<html lang="fr">
+<html>
 	
 <head>
-
     <meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	
-	<title> .............. </title>
+	<title> E-commerce_Glasses </title>
 	<!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-	 <link href="css/styles.css" rel="stylesheet">
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	 
 
-    <!-- Custom CSS -->
-    <link href="css/modern-business.css" rel="stylesheet">
+    <!-- mon porpre CSS -->
+    <link href="css/styles.css" rel="stylesheet">
 	
 	
 </head>
 
 <body>
 
-	<script src = "js/bootstrap.js"></script>
+
+<!-- La bar de navigation bootstrap-->
+
+<!-- navbar de couleur noir 'inverse' et fixée en haut de la page-->
+<nav class = "navbar navbar-inverse navbar-static-top">
+	<div class = "container">
+	<!-- Ajout de la marque du site le brand a gauche-->
+		<a href="#" class = "navbar-brand"> Glasses </a>
+		
+		<!-- Ajout d'un boutton pour rassembler les pages quand la fenêtre devient petite
+			le .navHeaderCollapse c'est comme un id pour cibler la div en question contenant la ul
+			qui elle méme contient les liens vers les différentes pages du site-->
+		<button class = "navbar-toggle" data-toggle = "collapse" data-target= ".navHeaderCollapse">
+		
+		<!-- 3 petites barres pour dire qu'il ya un menu-->
+		<span class ="icon-bar"> </span>
+		<span class ="icon-bar"> </span>
+		<span class ="icon-bar"> </span>
+		</button>
+		
+		<!-- la div pour contenir la ul des pages avec l'id 'navHeaderCollapse' pour la rendre déployable-->
+		<div class = "collapse navbar-collapse navHeaderCollapse">
+		
+			<!-- finalement notre ul poussser à droite avec les liens des pages -->
+			<ul class = "nav navbar-nav navbar-right">
+				
+				<li class = "active"><a href = "#"> Home </a></li>
+				<li><a href = "#"> Sun Glasses </a></li>
+				<li><a href = "#"> View Glasses </a></li>
+				<li><a href = "#"> About US </a></li>
+
+			</ul>
+		</div>
+		
+	</div>
+</nav>
+
+
+
+<script src="js/jquery-2.1.3.min.js"></script>
 </body>
 
 </html>
