@@ -5,13 +5,22 @@
 		
 
 			<div ng-repeat="article in articles | startFrom:currentPage*pageSize | limitTo:pageSize">
-			<div class ="col-md-2">
-				<h2 > <a href='{{article.marque}}' class="marque">{{article.marque}}</a> </h2>
+			<div class ="col-md-2 attributs">
+				<h2 > <a href = "#View_Glasses" class="marque" ng-click="id = article.{{article.marque}}">{{article.marque}}</a> </h2>
+				<br>
+				<ul>
+				<li>Prix : {{article.prix}}$</li>
+				<li>Description : {{article.desc}}</li>
+				<li>Nombre Dispo : {{article.qte_res}}</li>
+				</ul>
+				<br>
+				<button class = "btn btn-info" ng-click="">Ajouter Panier</button>
+				
 			</div>
 			</div>
 
 
-			<div class ="col-md-6">
+
 
 			<button class = "btn btn-primary" ng-disabled="currentPage == 0" ng-click="currentPage=currentPage-1">
         Previous
@@ -20,7 +29,6 @@
     		<button class = "btn btn-primary" ng-disabled="currentPage >= data.length/pageSize - 1" ng-click="currentPage=currentPage+1">
         Next
     		</button>
-    		</div>
 		
 	</div>
 </div>

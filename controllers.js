@@ -15,7 +15,6 @@ on aura 3 pages ... */
 
 
 
-
 $scope.currentPage = 0;
 $scope.pageSize = 6;
 $scope.numberOfPages=function(){
