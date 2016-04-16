@@ -2,3 +2,10 @@ p {
     text-align: justify;
     text-justify: inter-word;
 }
+
+.marque{
+
+text-align: justify;
+text-decoration: underline;
+float: 20px;
+}

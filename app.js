@@ -10,9 +10,9 @@ var GlassesApp = angular.module('GlassesApp', ['ngRoute']);
                 controller  : 'homeCtrl'
             })
 
-            .when('/Sun_Glasses', {
-                templateUrl : 'views/Sun_Glasses.html',
-                controller  : 'Sun_GlassesCtrl'
+            .when('/Glasses', {
+                templateUrl : 'views/Glasses.html',
+                controller  : 'GlassesCtrl'
             })
 
             .when('/View_Glasses', {
@@ -28,9 +28,9 @@ var GlassesApp = angular.module('GlassesApp', ['ngRoute']);
 
     });
 	
-	GlassesApp.controller('Sun_GlassesCtrl', ['$scope', function($scope) {
+	/*GlassesApp.controller('Sun_GlassesCtrl', ['$scope', function($scope) {
 
 	
 
 
-	}]);
+	}]);*/
