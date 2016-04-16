@@ -4,6 +4,7 @@
 	<div class ="row">
 		
 
+			<!-- une boucle pour parcourir les lunettes et les afficher, on a un filtre aussi pour la pagination -->
 			<div ng-repeat="article in articles | startFrom:currentPage*pageSize | limitTo:pageSize">
 			<div class ="col-md-2 attributs">
 				<h2 > <a href = "#View_Glasses" class="marque" ng-click="id = article.{{article.marque}}">{{article.marque}}</a> </h2>

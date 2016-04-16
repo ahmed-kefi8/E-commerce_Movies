@@ -3,8 +3,8 @@
 <html ng-app="GlassesApp">
 	
 <head>
-    <meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8"> <!-- l'encodage -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- pour s'ajuster a la largeur de l'appareil utilisé -->
 	
 	<title> E-commerce_Glasses </title>
 	<!-- Bootstrap Core CSS -->
@@ -19,9 +19,12 @@
 
 <body>
 
+<!-- ajout de la navbar et du slider qui sont dans des fichiers séparés -->
+
 <div ng-include="'navigation_bar.html'"></div>
 <div ng-include="'slider.html'"></div>
 
+<!-- principe de la SPA pour ajouter les différentes views -->
 <div ng-view></div>
 
 

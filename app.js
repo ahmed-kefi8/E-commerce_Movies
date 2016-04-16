@@ -1,3 +1,7 @@
+
+
+/* le rooting entre les différentes views*/
+
 var GlassesApp = angular.module('GlassesApp', ['ngRoute']);
 
     GlassesApp.config(function($routeProvider) {
