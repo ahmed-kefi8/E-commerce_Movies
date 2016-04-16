@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html>
+<html ng-app="GlassesApp">
 	
 <head>
     <meta charset="utf-8">
@@ -19,46 +19,24 @@
 
 <body>
 
+<div ng-include="'navigation_bar.html'"></div>
 
-<!-- La bar de navigation bootstrap-->
-
-<!-- navbar de couleur noir 'inverse' et fixée en haut de la page-->
-<nav class = "navbar navbar-inverse navbar-static-top">
-	<div class = "container">
-	<!-- Ajout de la marque du site le brand a gauche-->
-		<a href="#" class = "navbar-brand"> Glasses </a>
-		
-		<!-- Ajout d'un boutton pour rassembler les pages quand la fenêtre devient petite
-			le .navHeaderCollapse c'est comme un id pour cibler la div en question contenant la ul
-			qui elle méme contient les liens vers les différentes pages du site-->
-		<button class = "navbar-toggle" data-toggle = "collapse" data-target= ".navHeaderCollapse">
-		
-		<!-- 3 petites barres pour dire qu'il ya un menu-->
-		<span class ="icon-bar"> </span>
-		<span class ="icon-bar"> </span>
-		<span class ="icon-bar"> </span>
-		</button>
-		
-		<!-- la div pour contenir la ul des pages avec l'id 'navHeaderCollapse' pour la rendre déployable-->
-		<div class = "collapse navbar-collapse navHeaderCollapse">
-		
-			<!-- finalement notre ul poussser à droite avec les liens des pages -->
-			<ul class = "nav navbar-nav navbar-right">
-				
-				<li class = "active"><a href = "#"> Home </a></li>
-				<li><a href = "#"> Sun Glasses </a></li>
-				<li><a href = "#"> View Glasses </a></li>
-				<li><a href = "#"> About US </a></li>
-
-			</ul>
-		</div>
-		
-	</div>
-</nav>
+<div ng-view></div>
 
 
-
+  <!-- added the bootstrap and Jquery js -->
+  
 <script src="js/jquery-2.1.3.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
+  <!-- added the angular js -->
+<script src="js/angular.min.js"></script>
+<script src="js/angular-route.js"></script>
+
+  <!-- added my app.js file -->
+
+<script src="app.js"></script>
+
 </body>
 
 </html>
