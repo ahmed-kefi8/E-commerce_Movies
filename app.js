@@ -1,39 +1,33 @@
 
 /* le rooting entre les différentes views*/
 
-var Movie_shop_App = angular.module('Movie_shop_App', ['ngRoute']);
+var Movie_Store_App = angular.module('Movie_Store_App', ['ngRoute']);
 
-    Movie_shop_App.config(function($routeProvider) {
+    Movie_Store_App.config(function($routeProvider) {
         $routeProvider
             .when('/', {
-              redirectTo: 'home'
+              redirectTo: 'Home'
             })
-            .when('/home', {
-                templateUrl : 'views/home.html',
-                controller  : 'homeCtrl'
-            })
-
-            .when('/Glasses', {
-                templateUrl : 'views/Glasses.html',
-                controller  : 'GlassesCtrl'
+            .when('/Home', {
+                templateUrl : 'views/Home.html',
             })
 
-            .when('/View_Glasses', {
-                templateUrl : 'views/View_Glasses.html',
-                controller  : 'View_GlassesCtrl'
+            .when('/Movies', {
+                templateUrl : 'views/Movies.html',
             })
-			 .when('/About_US', {
+
+            .when('/Movie_detail', {
+                templateUrl : 'views/Movie_detail.html',
+            })
+             .when('/Cart', {
+                templateUrl : 'views/Cart.html',
+            })
+            .when('/Login', {
+                templateUrl : 'views/Login.html',
+            })
+            .when('/About_US', {
                 templateUrl : 'views/About_US.html',
-                controller  : 'About_USCtrl'
             })
-			
-			.otherwise({redirectTo: 'home'});
+            .otherwise({redirectTo: 'Home'});
 
     });
-	
-	/*Movie_shop_App.controller('Sun_GlassesCtrl', ['$scope', function($scope) {
-
-	
-
-
-	}]);*/

@@ -1,0 +1,36 @@
+
+<div class ="container">
+<div ng-controller="MainCtrl">
+	<div class ="row">
+		
+
+			<!-- une boucle pour parcourir les lunettes et les afficher, on a un filtre aussi pour la pagination -->
+			<div ng-repeat="article in articles | startFrom:currentPage*pageSize | limitTo:pageSize">
+			<div class ="col-md-2 attributs">
+				<h2 > <a href = "#View_Glasses" class="marque" ng-click="id = article.{{article.marque}}">{{article.Title}}</a> </h2>
+				<br>
+				<ul>
+				<li>Runtime : {{article.Runtime}}$</li>
+				<li>Year : {{article.Year}}</li>
+				<li>Genre : {{article.Genre}}</li>
+				</ul>
+				<br>
+				<button class = "btn btn-info" ng-click="">Ajouter Panier</button>
+				
+			</div>
+			</div>
+
+
+
+
+			<button class = "btn btn-primary" ng-disabled="currentPage == 0" ng-click="currentPage=currentPage-1">
+        Previous
+    		</button>
+    			{{currentPage+1}}/{{numberOfPages()}}
+    		<button class = "btn btn-primary" ng-disabled="currentPage >= data.length/pageSize - 1" ng-click="currentPage=currentPage+1">
+        Next
+    		</button>
+		
+	</div>
+</div>
+</div>

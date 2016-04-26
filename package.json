@@ -1,0 +1,14 @@
+{
+  "name": "E-commerce_Movies",
+  "version": "0.1.0",
+  "description": "",
+  "main": "",
+  "scripts": {
+    "test": ""
+  },
+  "author": "KEFI",
+  "license": "",
+  "dependencies": {
+    "express": "^4.13.4"
+  }
+}
