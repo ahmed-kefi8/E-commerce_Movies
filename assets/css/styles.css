@@ -1,0 +1,21 @@
+p {
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+.marque{
+
+text-align: justify;
+text-decoration: underline;
+}
+
+
+.attributs{
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+body{
+
+	background-color: #ccebff;
+}

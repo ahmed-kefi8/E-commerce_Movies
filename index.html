@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html ng-app="GlassesApp">
+<html ng-app="Movie_shop_App">
 	
 <head>
     <meta charset="utf-8"> <!-- l'encodage -->
@@ -8,11 +8,11 @@
 	
 	<title> E-commerce_Glasses </title>
 	<!-- Bootstrap Core CSS -->
-	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="assets/css/bootstrap.min.css" rel="stylesheet">
 	 
 
     <!-- mon porpre CSS -->
-    <link href="css/styles.css" rel="stylesheet">
+    <link href="assets/css/styles.css" rel="stylesheet">
 	
 	
 </head>
@@ -21,7 +21,7 @@
 
 <!-- ajout de la navbar et du slider qui sont dans des fichiers séparés  -->
 
-<div ng-include="'navigation_bar.html'"></div>
+<div ng-include="'views/common/navigation_bar.html'"></div>
 <div ng-include="'slider.html'"></div>
 
 <!-- principe de la SPA pour ajouter les différentes views -->
@@ -31,17 +31,17 @@
 
   <!-- added the bootstrap and Jquery js -->
   
-<script src="js/jquery-2.1.3.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
+<script src="assets/js/jquery-2.1.3.min.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
 
   <!-- added the angular js -->
-<script src="js/angular.min.js"></script>
-<script src="js/angular-route.js"></script>
+<script src="assets/js/angular.min.js"></script>
+<script src="assets/js/angular-route.js"></script>
 
   <!-- added my app.js file -->
 
 <script src="app.js"></script>
-<script src="controllers.js"></script>
+<script src="controllers/controllers.js"></script>
 
 </body>
 

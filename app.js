@@ -1,10 +1,9 @@
 
-
 /* le rooting entre les différentes views*/
 
-var GlassesApp = angular.module('GlassesApp', ['ngRoute']);
+var Movie_shop_App = angular.module('Movie_shop_App', ['ngRoute']);
 
-    GlassesApp.config(function($routeProvider) {
+    Movie_shop_App.config(function($routeProvider) {
         $routeProvider
             .when('/', {
               redirectTo: 'home'
@@ -32,7 +31,7 @@ var GlassesApp = angular.module('GlassesApp', ['ngRoute']);
 
     });
 	
-	/*GlassesApp.controller('Sun_GlassesCtrl', ['$scope', function($scope) {
+	/*Movie_shop_App.controller('Sun_GlassesCtrl', ['$scope', function($scope) {
 
 	
 
