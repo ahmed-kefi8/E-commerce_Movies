@@ -19,10 +19,18 @@ var Movie_Store_App = angular.module('Movie_Store_App', ['ngRoute']);
             .when('/Movie_detail', {
                 templateUrl : 'views/Movie_detail.html',
             })
-             .when('/Cart', {
+            .when('/Cart', {
+                resolve: {
+                    "check": function($location, $rootScope){
+                        if(!$rootScope.loggedIn){
+                            $location.path('/Login');
+                        }
+                    }
+                },
                 templateUrl : 'views/Cart.html',
             })
             .when('/Login', {
+
                 templateUrl : 'views/Login.html',
             })
             .when('/About_US', {
