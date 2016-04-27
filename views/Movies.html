@@ -1,21 +1,21 @@
 
 <div class ="container">
-<div ng-controller="MainCtrl">
+<div ng-controller="MoviesController">
 	<div class ="row">
 		
 
 			<!-- une boucle pour parcourir les lunettes et les afficher, on a un filtre aussi pour la pagination -->
-			<div ng-repeat="article in articles | startFrom:currentPage*pageSize | limitTo:pageSize">
+			<div ng-repeat="movie in movies | startFrom:currentPage*pageSize | limitTo:pageSize">
 			<div class ="col-md-2 attributs">
-				<h2 > <a href = "#View_Glasses" class="marque" ng-click="id = article.{{article.marque}}">{{article.Title}}</a> </h2>
+				<h2 >{{movie.Title}} </h2>
 				<br>
 				<ul>
-				<li>Runtime : {{article.Runtime}}$</li>
-				<li>Year : {{article.Year}}</li>
-				<li>Genre : {{article.Genre}}</li>
+				<li>Runtime : {{movie.Runtime}}$</li>
+				<li>Year : {{movie.Year}}</li>
+				<li>Genre : {{movie.Genre}}</li>
 				</ul>
 				<br>
-				<button class = "btn btn-info" ng-click="">Ajouter Panier</button>
+				<a ng-href="#/Movie_detail/{{movie.imdbID}}" class = "btn btn-info"> See More </a>
 				
 			</div>
 			</div>
