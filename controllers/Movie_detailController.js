@@ -1,5 +1,5 @@
 
-Movie_Store_App.controller('Movie_detailController',['$scope', '$routeParams', '$http','$filter', function($scope, $routeParams, $http, $filter){
+Movie_Store_App.controller('Movie_detailController',['$scope','$http','$filter','$routeParams','CartService', function($scope, $http, $filter, $routeParams, CartService){
 
 
 
@@ -23,8 +23,10 @@ for(var i = 0; i < $scope.movies.length; i++) {
         }
 });
 */
+$scope.addToCart = function(){
+	CartService.addToCart($scope.movie);
+}
 
-  $scope.addProduct = function(){
 
-  }
+
 }]);
