@@ -4,33 +4,37 @@
 	<div class ="row">
 		
 
+
+			<div class="row">
+
 			<!-- une boucle pour parcourir les lunettes et les afficher, on a un filtre aussi pour la pagination -->
 			<div ng-repeat="movie in movies | startFrom:currentPage*pageSize | limitTo:pageSize">
-			<div class ="col-md-2 attributs">
-				<h2 >{{movie.Title}} </h2>
-				<br>
-				<ul>
-				<li>Runtime : {{movie.Runtime}}$</li>
-				<li>Year : {{movie.Year}}</li>
-				<li>Genre : {{movie.Genre}}</li>
-				</ul>
-				<br>
-				<a ng-href="#/Movie_detail/{{movie.imdbID}}" class = "btn btn-info"> See More </a>
-				
-			</div>
+
+			
+                <div class="col-md-3">
+					<img src="{{ movie.Poster }}" class="img-rounded img-responsive" width="200" height="200"/>
+					<a ng-href="#/Movie_detail/{{movie.imdbID}}" class = "btn btn-info"> See More </a>
+				</div>
 			</div>
 
+			</div>
 
-
+<br><br>
+		
+		<div class="row">
 
 			<button class = "btn btn-primary" ng-disabled="currentPage == 0" ng-click="currentPage=currentPage-1">
-        Previous
+        	Previous
     		</button>
     			{{currentPage+1}}/{{numberOfPages()}}
     		<button class = "btn btn-primary" ng-disabled="currentPage >= data.length/pageSize - 1" ng-click="currentPage=currentPage+1">
-        Next
+        	Next
     		</button>
-		
+		</div>
+
+
+
+
 	</div>
 </div>
 </div>

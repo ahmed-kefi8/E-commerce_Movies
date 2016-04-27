@@ -14,7 +14,7 @@ $scope.movies = data; // response data
 
 
 $scope.currentPage = 0;
-$scope.pageSize = 6;
+$scope.pageSize = 4;
 $scope.numberOfPages=function(){
         return Math.ceil($scope.movies.length/$scope.pageSize);                
     }
