@@ -8,22 +8,20 @@ $scope.movies = data; // response data
 
 
 
+
+
+
+
 /* La pagination, on va limiter le nombre de movies par page à 6 */
-
-
-
-
 $scope.currentPage = 0;
 $scope.pageSize = 4;
 $scope.numberOfPages=function(){
         return Math.ceil($scope.movies.length/$scope.pageSize);                
     }
 
-
-
-
-
 }]);
+
+
 
 
 
