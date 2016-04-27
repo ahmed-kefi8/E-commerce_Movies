@@ -2,7 +2,7 @@ Movie_Store_App.controller('MoviesController',['$scope', '$http','$filter', func
 
   
 /* Parsing du fichier movies.json et récupération des données dans la variable movies */
-$http({method: 'POST', url: 'movies.json'}).success(function(data){
+$http({method: 'GET', url: 'movies.json'}).success(function(data){
 $scope.movies = data; // response data
 });
 

@@ -1,16 +1,72 @@
 <div class="container" id="product-section" ng-controller="Movie_detailController">
   <div class="row">
-   <div class="col-md-6">
-    … [this is the product image]
-   </div>
-   <div class="col-md-6">
-    …[this is the product information]
-   </div>
+<div class="col-md-6">
+ <img
+  src="{{ movie.Poster }}"
+  alt="Kodak Brownie Flash B Camera"
+  class="img-rounded img-responsive"
+  width="500" height="700"
+ />
+</div>
+
+<div class="col-md-6">
+ <div class="row">
+  <div class="col-md-12">
+   <h1>{{ movie.Title }}</h1>
+ </div>
+</div><!-- end row -->
+<div class="row">
+ <div class="col-md-12">
+  <p class="description">
+  <ul>
+  <li>Runtime: {{movie.Runtime}}</li>
+  <li>Year: {{movie.Year}}</li>
+  <li>Realeased: {{movie.Released}}</li>
+   <li>imdb Rating: {{movie.imdbRating}}</li>
+  <li>Genre: {{movie.Genre}}</li>
+  <li>Director: {{movie.Director}}</li>
+  <li>Actors: {{movie.Actors}}</li>
+  <li>Plot: {{movie.Plot}}</li>
+  </ul>
+   
+  </p>
+ </div>
+</div><!-- end row -->
+
+<div class="row">
+ <div class="col-md-12 bottom-rule">
+  <h2 class="product-price">$30.00</h2>
+ </div>
+</div><!-- end row -->
+
+
+<div class="row add-to-cart">
+ <div class="col-md-5 product-qty">
+  <span class="btn btn-default btn-lg btn-qty">
+   <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+  </span>
+
+  <input class="btn btn-default btn-lg btn-qty" value="1" />
+
+  <span class="btn btn-default btn-lg btn-qty">
+   <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+  </span>
+ </div>
+
+ <div class="col-md-4">
+  <button class="btn btn-lg btn-brand btn-full-width">
+   Add to Cart
+  </button>
+ </div>
+</div><!-- end row -->
+
+<div class="row">
+ <div class="col-md-4 text-center">
+  <span class="monospaced">In Stock</span>
+ </div>
+</div><!-- end row -->
+
+
+</div><!-- end row-->
   </div><!-- end row -->
  </div><!-- end container -->
-
-
-
-
-</div>
-</div>

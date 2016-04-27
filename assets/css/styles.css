@@ -26,6 +26,14 @@ body{
 	background-color: #ccebff;
 }
 
+/* add to cart button*/ 
+
+.add-to-cart .btn-qty {
+  width: 52px;
+  height: 46px;
+}
+
+.add-to-cart .btn { border-radius: 0; }
 
 /*    --------------------------------------------------
 	:: Login Section
