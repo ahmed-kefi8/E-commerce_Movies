@@ -1,17 +1,44 @@
 var mongoose = require('mongoose');
-var Movie_model = require('./database/Movie_model').Movie;
+var Movie = require('./database/Movie_model');
 var express = require('express');
 var router = express.Router();
 
 router.get('/', function(req, res) {
-	res.send('Hello from /Movie_Store');
-	/*
-    Movie_model.find(function(err, results) {
+   Movie.find(function(err, results) {
         if (err) { console.log(err); }
 
         res.send({ movies: results });
-    });*/
+    });
+
 });
 
+router.post('/', function(req, res) {
+    var movie = new Movie(req.body);
+    movie.save(function(err) {
+        if (err) { console.log(err); }
+
+        res.send('Movie saved');
+    });
+});
+
+/*router.put('/:id', function(req, res) {
+    var id = req.params.id;
+    Movie_model.update({ _id: mongoose.Types.ObjectId(id) }, {
+        $set: { task: req.body.task }
+    }, function(err) {
+        if (err) { console.log(err); }
+
+        res.send('Movie updated');
+    });
+});
+
+router.delete('/:id', function(req, res) {
+    var id = req.params.id;
+    Movie_model.remove({ _id: mongoose.Types.ObjectId(id) }, function(err) {
+        if (err) { console.log(err); }
+
+        res.send('ToDo deleted');
+    });
+});*/
 
 module.exports = router;

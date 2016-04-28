@@ -1,9 +1,12 @@
 Movie_Store_App.controller('MoviesController',['$scope', '$http','$filter', function($scope, $http, $filter){
 
   
-/* Parsing du fichier movies.json et récupération des données dans la variable movies */
-$http({method: 'GET', url: 'movies.json'}).success(function(data){
-$scope.movies = data; // response data
+  
+/* récupération des données dans la variable movies */
+$http({method: 'GET', url: 'http://localhost:3000/Movie_Store'}).success(function(data){
+console.log(data);
+$scope.movies = data.movies; // response data
+
 });
 
 

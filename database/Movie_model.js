@@ -1,9 +1,9 @@
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/Movie_Store');
 
-var Movie = mongoose.model('Movie', {
-
-Price : String,
+var MovieSchema = mongoose.Schema(
+	{
+		Price : String,
 Title : String,
 Year : String,
 Rated : String,
@@ -24,6 +24,6 @@ imdbVotes : String,
 imdbID : String,
 Type : String,
 Response : String
-});
+	});
 
-module.exports.Movie = Movie;
+module.exports = mongoose.model('Movie', MovieSchema);
