@@ -1,14 +1,18 @@
 {
   "name": "E-commerce_Movies",
   "version": "0.1.0",
-  "description": "",
+  "repository": "https://github.com/ahmedkefi-craftacademy/E-commerce_Movies",
+  "description": " a Movie Store App ",
   "main": "",
   "scripts": {
     "test": ""
   },
-  "author": "KEFI",
+  "author": "KEFI AHMED",
   "license": "",
   "dependencies": {
-    "express": "^4.13.4"
+    "body-parser": "^1.15.0",
+    "express": "^4.13.4",
+    "kerberos": "0.0.20",
+    "mongoose": "^4.4.14"
   }
 }

@@ -1,13 +1,17 @@
 var express = require('express');
 var app = express();
 
-app.get('/', function(req, res){
 
-res.send("Hello world from server.js")
+var PORT = process.env.PORT || 3000;
+
+app.use(express.static(__dirname + "/public"));
+
+var Movie_Store_Routes = require('./routes_Server');
+app.use('/Movie_Store' , Movie_Store_Routes);
 
 
 
+
+app.listen(PORT, function(){
+console.log("Server running on port " + PORT);
 });
-
-app.listen(3000);
-console.log("Server running on port 3000");
