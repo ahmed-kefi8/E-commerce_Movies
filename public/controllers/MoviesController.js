@@ -1,16 +1,16 @@
-Movie_Store_App.controller('MoviesController',['$scope', '$http','$filter', function($scope, $http, $filter){
+Movie_Store_App.controller('MoviesController',['$scope', '$http','$filter','MovieFactory', function($scope, $http, $filter, MovieFactory){
 
   
   
 /* récupération des données dans la variable movies */
-$http({method: 'GET', url: 'http://localhost:3000/Movie_Store'}).success(function(data){
+/*$http({method: 'GET', url: 'http://localhost:3000/Movie_Store'}).success(function(data){
 console.log(data);
 $scope.movies = data.movies; // response data
 
-});
+}); */
 
-
-
+$scope.movies = MovieFactory.query();
+console.log($scope.movies.toString() + '     88888877999999999788888');
 
 
 

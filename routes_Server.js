@@ -7,7 +7,7 @@ router.get('/', function(req, res) {
    Movie.find(function(err, results) {
         if (err) { console.log(err); }
 
-        res.send({ movies: results });
+        res.send(results);
     });
 
 });
