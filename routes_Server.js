@@ -35,38 +35,20 @@ router.post('/', function(req, res) {
 });
 
 
-router.route('/:id')
-    .get(function(req, res){
-        res.json(req.movie);
-    })
-    .put(function(req, res){
-
-
-        req.movie.Title = req.movie.Title;
-
-
-        req.movie.save(function(err){
-          if(err)
-            res.status(500).send(err);
-          else{
-              res.json(req.movie);
-            }
-        });
-    });
-
-
-/* a voir
 router.put('/:id', function(req, res) {
-    var id = req.params.id;
-    console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
-    Movie.update({ _id: mongoose.Types.ObjectId(id) }, {
-        $set: { Title: req.body.Title }
-    }, function(err) {
-        if (err) { console.log(err); }
+  return Movie.findById(req.params.id, function (err, movie) {
+    movie.Title = req.body.Title;
 
-        res.send('Movie updated');
+    return movie.save(function (err) {
+      if (!err) {
+        console.log("updated");
+      } else {
+        console.log(err);
+      }
+      return res.send(movie);
     });
-});*/
+  });
+});
 
 
 

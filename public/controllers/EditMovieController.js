@@ -7,43 +7,22 @@ console.log($scope.movie +'888');
 */
 
 
-
-
   MovieFactory.get({ id: $routeParams._id }, function(data) {
-      return $scope.movie = data;
-            console.log($scope.movie);
+     $scope.movie = data;
+     console.log($scope.movie);
+    }); 
 
-    });
-
-
-
-
+//$scope.movie = MovieFactory.get({ id: $routeParams._id }); //Get a single movie
+//console.log($scope.movie);
 
 
 
 
 
 $scope.updateMovie = function(){
-
-
-console.log("update fired" + $scope.movie);
-
-      MovieFactory.update($scope.movie);
-
-                                };
-
-
-
-
-
-
-
-
-
-
-
-
-
+console.log($scope.movie.Title);
+MovieFactory.update($scope.movie);
+                                }
 
 
 
