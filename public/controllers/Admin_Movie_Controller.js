@@ -1,4 +1,4 @@
-Movie_Store_App.controller('AdminMoviesController',['$scope','MovieFactory','$location','$route', function($scope, MovieFactory, $location, $route){
+Movie_Store_App.controller('AdminMoviesController',['$scope','MovieFactory','$location','$route','$routeParams', function( $scope, MovieFactory, $location, $route, $routeParams ){
 
 
 
@@ -18,28 +18,5 @@ $scope.AddMovie = function(movie){
  return MovieFactory.save($scope.movie);
 
 };
-
-
-
-
-
-
-/*
-
-$scope.updateMovie = function(){
-
-MovieFactory.get({ id: $routeParams.id }, function(data) {
-      MovieFactory.update($scope.movie);
-
-};
-
-
-
-
-
-*/
-
-
-
 
 }]);

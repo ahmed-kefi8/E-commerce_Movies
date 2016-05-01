@@ -14,6 +14,16 @@ router.get('/', function(req, res) {
 
 });
 
+router.get('/:id', function(req, res) {
+   Movie.findOne({ _id: req.params.id}, function(err, movie) {
+    if (err) {
+      return res.send(err);
+    }
+
+    res.json(movie);
+  });
+});
+
 
 
 router.post('/', function(req, res) {
@@ -25,10 +35,30 @@ router.post('/', function(req, res) {
 });
 
 
+router.route('/:id')
+    .get(function(req, res){
+        res.json(req.movie);
+    })
+    .put(function(req, res){
 
 
+        req.movie.Title = req.movie.Title;
+
+
+        req.movie.save(function(err){
+          if(err)
+            res.status(500).send(err);
+          else{
+              res.json(req.movie);
+            }
+        });
+    });
+
+
+/* a voir
 router.put('/:id', function(req, res) {
     var id = req.params.id;
+    console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
     Movie.update({ _id: mongoose.Types.ObjectId(id) }, {
         $set: { Title: req.body.Title }
     }, function(err) {
@@ -36,7 +66,7 @@ router.put('/:id', function(req, res) {
 
         res.send('Movie updated');
     });
-});
+});*/
 
 
 

@@ -16,11 +16,15 @@
                 templateUrl : 'views/Movies.html',
             })
 
+            .when('/EditMovie/:_id', {
+                templateUrl : 'views/EditMovie.html',
+            })
+
             .when('/AddMovie', {
                 templateUrl : 'views/AddMovie.html',
             })
 
-            .when('/Movie_detail/:imdbID', {
+            .when('/Movie_detail/:_id', {
                 templateUrl : 'views/Movie_detail.html',
             })
             .when('/Cart', {

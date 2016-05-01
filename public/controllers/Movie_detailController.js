@@ -1,12 +1,14 @@
 
-Movie_Store_App.controller('Movie_detailController',['$scope','$http','$filter','$routeParams','CartService', function($scope, $http, $filter, $routeParams, CartService){
+Movie_Store_App.controller('Movie_detailController',['$scope','$http','$filter','$routeParams','MovieFactory','CartService', function($scope, $http, $filter, $routeParams,MovieFactory , CartService){
 
 
 
-$http({method: 'GET', url: 'movies.json'}).success(function(data){
-$scope.movies = data; // response data
-$scope.movie = $filter('filter')($scope.movies, {imdbID : $routeParams.imdbID})[0];
-});
+
+
+
+console.log($routeParams._id);
+
+$scope.movie = MovieFactory.get({ id: $routeParams._id }); //Get a single movie
 
 
 
