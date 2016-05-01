@@ -8,17 +8,16 @@ $scope.deleteMovie = function(_id){
 	console.log("delete fired");
 	MovieFactory.delete({ id: _id });
 	$route.reload();
+	alert("Movie deleted");
 	};
 
 
-/*
-  $scope.deleteMovie = function(movie) { // Delete a movie. Issues a DELETE to /api/movies/:id
-      movie.$delete(function() {
+$scope.AddMovie = function(movie){
+	console.log("add fired");
+	alert("Movie added");
+ return MovieFactory.save($scope.movie);
 
-      });
-    }
-
-*/
+};
 
 
 
@@ -34,7 +33,7 @@ MovieFactory.get({ id: $routeParams.id }, function(data) {
 
 };
 
-$scope.AddMovie = function(){ return MovieFactory.save($scope.movie);};
+
 
 
 

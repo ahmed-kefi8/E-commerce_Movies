@@ -16,6 +16,10 @@
                 templateUrl : 'views/Movies.html',
             })
 
+            .when('/AddMovie', {
+                templateUrl : 'views/AddMovie.html',
+            })
+
             .when('/Movie_detail/:imdbID', {
                 templateUrl : 'views/Movie_detail.html',
             })
