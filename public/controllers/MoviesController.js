@@ -10,7 +10,7 @@ $scope.movies = data.movies; // response data
 }); */
 
 $scope.movies = MovieFactory.query();
-console.log($scope.movies.toString() + '     88888877999999999788888');
+
 
 
 

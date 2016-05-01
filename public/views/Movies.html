@@ -1,6 +1,5 @@
 
-<div class ="container">
-<div ng-controller="MoviesController">
+<div class ="container" ng-controller="MoviesController">
 
 
 
@@ -23,9 +22,6 @@
 
 <hr>
 	<div class ="row">
-		
-
-
 			<div class="row">
 
 			<!-- une boucle pour parcourir les lunettes et les afficher, on a un filtre aussi pour la pagination -->
@@ -36,11 +32,11 @@
 					<img src="{{ movie.Poster }}" class="img-rounded img-responsive" width="200" height="200"/>
 					<a ng-href="#/Movie_detail/{{movie.imdbID}}" class = "btn btn-info"> See More </a>
 				</div>
-			</div>
 
 			</div>
+			</div>
 
-<br><br>
+
 		
 		<div class="row">
 
@@ -52,10 +48,7 @@
         	Next
     		</button>
 		</div>
+    </div>
 
 
-
-
-	</div>
-</div>
-</div>
+</div> <!-- div container-->

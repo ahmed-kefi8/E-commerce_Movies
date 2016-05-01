@@ -8,6 +8,10 @@
                 templateUrl : 'views/Home.html',
             })
 
+            .when('/Admin', {
+                templateUrl : 'views/Admin.html',
+            })
+
             .when('/Movies', {
                 templateUrl : 'views/Movies.html',
             })

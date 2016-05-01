@@ -23,8 +23,9 @@
 
 <div ng-include="'views/common/navigation_bar.html'"></div>
 <!-- principe de la SPA pour ajouter les différentes views -->
+	<div class = "container" >
 <div ng-view></div>
-
+	</div>
 
   <!-- added the bootstrap and Jquery js -->
   
@@ -48,6 +49,8 @@
 <script src="controllers/MoviesController.js"></script>
 <script src="controllers/Movie_detailController.js"></script>
 <script src="controllers/CartController.js"></script>
+<script src="controllers/Admin_Movie_Controller.js"></script>
+
 
 <script src="services/CartService.js"></script>
 <script src="factories/Movie_Factory.js"></script>
