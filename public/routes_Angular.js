@@ -8,8 +8,12 @@
                 templateUrl : 'views/Home.html',
             })
 
-            .when('/Admin', {
-                templateUrl : 'views/Admin.html',
+            .when('/ManageMovies', {
+                templateUrl : 'views/ManageMovies.html',
+            })
+
+            .when('/ManageUsers', {
+                templateUrl : 'views/ManageUsers.html',
             })
 
             .when('/Movies', {
@@ -37,10 +41,7 @@
                 },
                 templateUrl : 'views/Cart.html',
             })
-            .when('/Login', {
 
-                templateUrl : 'views/Login.html',
-            })
             .when('/About_US', {
                 templateUrl : 'views/About_US.html',
             })

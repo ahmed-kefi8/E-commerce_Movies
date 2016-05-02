@@ -1,22 +1,33 @@
 
-Movie_Store_App.controller('loginController',['$scope','$location','$rootScope', function($scope, $location, $rootScope){
+Movie_Store_App.controller('LoginController',['$scope','$location','$rootScope','UserLoginFactory', function($scope, $location, $rootScope, UserLoginFactory){
+$scope.user = {};
+
 
 
 $scope.submitLogin = function(){
-	
-  
 
-	if ($scope.email == "ahmed@gmail.com" && $scope.password == '12345')
-		{ 
-			$rootScope.loggedIn = true;
-			$location.path('/Cart');
-		}
-	else
-		alert('Wrong email or password');
+console.log("submit login fired");
 
 
+
+
+$scope.user = UserLoginFactory.get({ email: "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" }); //Get a single user
+ console.log($scope.user);
+
+
+if ($scope.user.password != "0")
+{   $rootScope.loggedIn = true;
+	$location.path('/Cart');}
+
+
+else
+{alert('Wrong email or password');}
 
 
 };
 
 }]);
+
+
+
+
