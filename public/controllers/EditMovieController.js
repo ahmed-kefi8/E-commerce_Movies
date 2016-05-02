@@ -22,6 +22,7 @@ console.log($scope.movie +'888');
 $scope.updateMovie = function(){
 console.log($scope.movie.Title);
 MovieFactory.update($scope.movie);
+alert("changement saved");
                                 }
 
 

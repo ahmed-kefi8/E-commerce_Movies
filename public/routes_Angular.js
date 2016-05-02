@@ -24,6 +24,10 @@
                 templateUrl : 'views/EditMovie.html',
             })
 
+            .when('/EditUser/:_id', {
+                templateUrl : 'views/EditUser.html',
+            })
+
             .when('/AddMovie', {
                 templateUrl : 'views/AddMovie.html',
             })

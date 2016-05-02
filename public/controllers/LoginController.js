@@ -24,7 +24,7 @@ UserLoginFactory.get({ email: $scope.submittedEmail }, function(data) {
 
 
 
-console.log($scope.user);
+//console.log($scope.user);
 
 if ($scope.submittedPassword.toString() === $scope.user.Password.toString())
 	{   $rootScope.loggedIn = true;
