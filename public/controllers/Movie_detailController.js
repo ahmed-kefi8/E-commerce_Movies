@@ -26,6 +26,7 @@ $scope.addToCart = function(){
 
 	UserFactory.update($scope.user);
 
+$location.path('/Cart/'+$scope.user._id);
 
 });
 }

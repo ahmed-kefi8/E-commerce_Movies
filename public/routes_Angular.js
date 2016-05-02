@@ -35,6 +35,12 @@
             .when('/Movie_detail/:_id', {
                 templateUrl : 'views/Movie_detail.html',
             })
+
+            .when('/Cart', {
+
+                templateUrl : 'views/Cart.html',
+            })
+
             .when('/Cart/:_id', {
                 resolve: {
                     "check": function($location, $rootScope){
