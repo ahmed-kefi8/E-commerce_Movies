@@ -111,7 +111,6 @@ router.post('/users', function(req, res) {
 router.put('/users/:id', function(req, res) {
   models.User.findById(req.params.id, function (err, user) {
 
-
    for (prop in req.body) {
       user[prop] = req.body[prop];
     }
@@ -136,7 +135,5 @@ router.delete('/users/:_id', function(req, res) {
         res.send('User deleted');
     });
 });
-
-
 
 module.exports = router;

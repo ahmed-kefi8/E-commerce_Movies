@@ -26,6 +26,7 @@
   <li>Director: {{movie.Director}}</li>
   <li>Actors: {{movie.Actors}}</li>
   <li>Plot: {{movie.Plot}}</li>
+  #Cart/{{$rootScope.LoggedInUSer}}
   </ul>
    
   </p>
@@ -34,7 +35,7 @@
 
 <div class="row">
  <div class="col-md-12 bottom-rule">
-  <h2 class="product-price">$30.00</h2>
+  <h2 class="product-price">{{movie.Price | currency}}</h2>
  </div>
 </div><!-- end row -->
 
@@ -59,7 +60,7 @@
 
 
  <div class="col-md-6">
-<a href="#Cart" class="btn btn-info btn-lg" ng-click="addToCart(movie)" >
+<a href="#Cart/{{userId}}" class="btn btn-info btn-lg" ng-click="addToCart(movie)" >
   <span class="glyphicon glyphicon-shopping-cart"></span> Add to Cart
 </a>
  </div>

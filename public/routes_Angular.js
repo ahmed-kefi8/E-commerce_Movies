@@ -31,7 +31,7 @@
             .when('/Movie_detail/:_id', {
                 templateUrl : 'views/Movie_detail.html',
             })
-            .when('/Cart', {
+            .when('/Cart/:_id', {
                 resolve: {
                     "check": function($location, $rootScope){
                         if(!$rootScope.loggedIn){

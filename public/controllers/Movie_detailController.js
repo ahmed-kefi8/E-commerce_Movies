@@ -1,7 +1,10 @@
 
-Movie_Store_App.controller('Movie_detailController',['$scope','$http','$filter','$routeParams','MovieFactory','CartService', function($scope, $http, $filter, $routeParams,MovieFactory , CartService){
+Movie_Store_App.controller('Movie_detailController',['$scope','$http','$filter','$routeParams','MovieFactory','CartService','$rootScope','$cookies', function($scope, $http, $filter, $routeParams,MovieFactory , CartService, $rootScope, $cookies){
 
 
+
+
+$scope.userId = $cookies.get('userId');
 
 
 

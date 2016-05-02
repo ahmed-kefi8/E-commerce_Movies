@@ -1,5 +1,5 @@
 
-Movie_Store_App.controller('LoginController',['$scope','$location','$rootScope','UserLoginFactory', function($scope, $location, $rootScope, UserLoginFactory){
+Movie_Store_App.controller('LoginController',['$scope','$location','$rootScope','UserLoginFactory','$cookies', function($scope, $location, $rootScope, UserLoginFactory, $cookies){
 
 
 
@@ -28,7 +28,13 @@ console.log($scope.user);
 
 if ($scope.submittedPassword.toString() === $scope.user.Password.toString())
 	{   $rootScope.loggedIn = true;
-		$location.path('/Cart');}
+		$location.path('/Cart/'+$scope.user._id);
+
+$cookies.put('userId', $scope.user._id);
+
+
+
+	}
 
 		else
 			{alert('Wrong email or password');}
