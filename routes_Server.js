@@ -1,12 +1,12 @@
 var mongoose = require('mongoose');
-var Movie = require('./database/Movie_model');
+var models = require('./database/models');
 var express = require('express');
 var router = express.Router();
 
 
 
-router.get('/', function(req, res) {
-   Movie.find(function(err, results) {
+router.get('/movies', function(req, res) {
+   models.Movie.find(function(err, results) {
         if (err) { console.log(err); }
 
         res.send(results);
@@ -14,8 +14,8 @@ router.get('/', function(req, res) {
 
 });
 
-router.get('/:id', function(req, res) {
-   Movie.findOne({ _id: req.params.id}, function(err, movie) {
+router.get('/movies/:id', function(req, res) {
+   models.Movie.findOne({ _id: req.params.id}, function(err, movie) {
     if (err) {
       return res.send(err);
     }
@@ -26,8 +26,8 @@ router.get('/:id', function(req, res) {
 
 
 
-router.post('/', function(req, res) {
-    var movie = new Movie(req.body);
+router.post('/movies', function(req, res) {
+    var movie = new models.Movie(req.body);
     movie.save(function(err) {
         if (err) { console.log(err); }
         res.send('Movie saved');
@@ -35,17 +35,21 @@ router.post('/', function(req, res) {
 });
 
 
-router.put('/:id', function(req, res) {
-  return Movie.findById(req.params.id, function (err, movie) {
-    movie.Title = req.body.Title;
+router.put('/movies/:id', function(req, res) {
+  models.Movie.findById(req.params.id, function (err, movie) {
 
-    return movie.save(function (err) {
+
+   for (prop in req.body) {
+      movie[prop] = req.body[prop];
+    }
+
+    movie.save(function (err) {
       if (!err) {
         console.log("updated");
       } else {
         console.log(err);
       }
-      return res.send(movie);
+      res.send(movie);
     });
   });
 });
@@ -53,13 +57,17 @@ router.put('/:id', function(req, res) {
 
 
 
-router.delete('/:_id', function(req, res) {
+router.delete('/movies/:_id', function(req, res) {
     var id = req.params._id;
-    Movie.remove({ _id: mongoose.Types.ObjectId(id) }, function(err) {
+    models.Movie.remove({ _id: mongoose.Types.ObjectId(id) }, function(err) {
         if (err) { console.log(err); }
 
         res.send('Movie deleted');
     });
 });
+
+
+
+
 
 module.exports = router;

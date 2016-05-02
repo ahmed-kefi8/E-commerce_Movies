@@ -3,7 +3,7 @@ mongoose.connect('mongodb://localhost/Movie_Store');
 
 var MovieSchema = mongoose.Schema(
 	{
-		Price : String,
+Price : String,
 Title : String,
 Year : String,
 Rated : String,
@@ -26,4 +26,20 @@ Type : String,
 Response : String
 	});
 
-module.exports = mongoose.model('Movie', MovieSchema);
+
+var UserSchema = mongoose.Schema(
+	{
+FirstName : String,
+LastName : String,
+Email : String,
+Password : String
+	});
+
+var Movie = mongoose.model('Movie', MovieSchema);
+var User = mongoose.model('User', UserSchema);
+
+
+module.exports = {
+  Movie: Movie,
+  User: User
+};
