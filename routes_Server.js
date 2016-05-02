@@ -4,7 +4,7 @@ var express = require('express');
 var router = express.Router();
 
 
-// THE MOVIES CRUD METHODS
+///////////  THE MOVIES CRUD METHODS  ///////////  
 router.get('/movies', function(req, res) {
    models.Movie.find(function(err, results) {
         if (err) { console.log(err); }
@@ -63,7 +63,11 @@ router.delete('/movies/:_id', function(req, res) {
     });
 });
 
-// THE USERS CRUD METHODS
+
+
+
+///////////  THE USERS CRUD METHODS  ///////////  
+
 router.get('/users', function(req, res) {
    models.User.find(function(err, results) {
         if (err) { console.log(err); }

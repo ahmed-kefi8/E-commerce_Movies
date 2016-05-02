@@ -32,14 +32,27 @@ var UserSchema = mongoose.Schema(
 FirstName : String,
 LastName : String,
 email : String,
-Password : String
+Password : String,
+Card_id : String
 	});
+
+
+var CartSchema = mongoose.Schema(
+	{
+User_id : String,
+Movies : []
+	});
+
+
+
 
 var Movie = mongoose.model('Movie', MovieSchema);
 var User = mongoose.model('User', UserSchema);
+var Cart = mongoose.model('Cart', CartSchema);
 
 
 module.exports = {
   Movie: Movie,
-  User: User
+  User: User,
+  Cart: Cart
 };

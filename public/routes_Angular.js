@@ -36,6 +36,7 @@
                     "check": function($location, $rootScope){
                         if(!$rootScope.loggedIn){
                             $location.path('/Login');
+                            alert("You have to login to access your Cart");
                         }
                     }
                 },
