@@ -8,6 +8,16 @@
                 templateUrl : 'views/Home.html',
             })
 
+            .when('/signin', {
+                templateUrl: 'views/signin.html',
+                controller: 'authController'
+            })
+
+            .when('/signup', {
+                templateUrl: 'views/signup.html',
+                controller: 'authController'
+            })
+
             .when('/ManageMovies', {
                 templateUrl : 'views/ManageMovies.html',
             })

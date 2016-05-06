@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "repository": "https://github.com/ahmedkefi-craftacademy/E-commerce_Movies",
   "description": " a Movie Store App ",
-  "main": "",
+  "main": "server.js",
   "scripts": {
     "test": ""
   },
@@ -11,9 +11,16 @@
   "license": "",
   "dependencies": {
     "angular-resource": "^1.5.5",
-    "body-parser": "^1.15.0",
+    "body-parser": "^1.15.1",
+    "connect": "^3.4.1",
+    "connect-mongo": "^1.1.0",
+    "cors": "^2.7.1",
     "express": "^4.13.4",
-    "kerberos": "0.0.20",
-    "mongoose": "^4.4.14"
+    "express-session": "^1.13.0",
+    "kerberos": "0.0.21",
+    "method-override": "^2.3.5",
+    "mongoose": "^4.4.15",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0"
   }
 }

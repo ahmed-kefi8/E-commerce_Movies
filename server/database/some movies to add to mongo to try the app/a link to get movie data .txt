@@ -1,0 +1,3 @@
+http://www.omdbapi.com/
+
+PS : start by adding a movie using the app to create the schema, after what import the movies.json into the movies document
