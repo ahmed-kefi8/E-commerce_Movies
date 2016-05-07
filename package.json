@@ -11,6 +11,7 @@
   "license": "",
   "dependencies": {
     "angular-resource": "^1.5.5",
+    "bcryptjs": "^2.3.0",
     "body-parser": "^1.15.1",
     "connect": "^3.4.1",
     "connect-mongo": "^1.1.0",
