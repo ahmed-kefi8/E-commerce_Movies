@@ -8,6 +8,10 @@
                 templateUrl : 'views/Home.html',
             })
 
+            .when('/Chat', {
+                templateUrl : 'views/Chat.html',
+            })
+
             .when('/signin', {
                 templateUrl: 'views/signin.html',
                 controller: 'authController'
@@ -54,7 +58,7 @@
             .when('/Cart/:_id', {
                 resolve: {
                     "check": function($location, $rootScope){
-                        if(!$rootScope.loggedIn){
+                        if(!$rootScope.loggeduser){
                             $location.path('/Login');
                             alert("You have to login to access your Cart");
                         }

@@ -23,7 +23,8 @@ Imdbrating : String,
 Imdbvotes : String,
 Imdbid : String,
 Type : String,
-Response : String
+Response : String,
+InStock : String
 	});
 
 
@@ -38,7 +39,7 @@ cart : []
 	});
 
 
-
+UserSchema.set('versionKey', false);
 
 
 

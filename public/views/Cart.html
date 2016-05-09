@@ -1,67 +1,116 @@
 <div class="container" ng-controller="CartController">
     <div class="row">
+ 
         <div class="col-sm-12 col-md-10 col-md-offset-1">
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th>Movies</th>
-                        <th class="text-center"></th>
-                        <th class="text-center">Price</th>
-                        <th> </th>
-                    </tr>
-                </thead>
-                <tbody >
-                
-	                    <tr ng-repeat="movie in cart">
-	                        <td class="col-md-6">
-	                        <div class="media">
-	                            <span class="pull-left"> <img class="media-object" src="{{movie.Poster}}" style="width: 100px; height: 100px;"> </span>
-	                            <div class="media-body">
-	                                <h4 class="media-heading"><a href="#">{{movie.Title}}</a></h4>
-	                                <h5 class="media-heading"> Actors : {{movie.Actors}} </h5>
-	                                <span>Genre: </span><span class="text-warning"><strong>{{movie.Genre}}</strong></span>
-	                            </div>
-	                        </div></td>
-	                        <td class="col-md-1" style="text-align: center">
+            <div ng-if="cart.length != 0">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Movies</th>
+                            <th>Quantity</th>
+                            <th class="text-center">Price</th>
+                            <th class="text-center">Total</th>
+                            <th> </th>
+                        </tr>
+                    </thead>
+                    <tbody>
 
-	                        </td>
-	                        <td class="col-md-1 text-center"><strong>{{movie.Price | currency}}</strong></td>
-	                        <td class="col-md-1 text-center"></td>
-	                        <td class="col-md-1">
-	                        <button type="button" class="btn btn-danger" ng-click="deleteFromCart(movie)">
-	                            <span class="glyphicon glyphicon-remove"></span> Remove
-	                        </button></td>
-	                    </tr> <!-- end ng-repeat -->
 
-                    <tr>
-                        <td>   </td>
-                        <td>   </td>
-                        <td>   </td>
-                        <td><h5>Estimated shipping</h5></td>
-                        <td class="text-right"><h5><strong>$6.94</strong></h5></td>
-                    </tr>
-                    <tr>
-                        <td>   </td>
-                        <td>   </td>
-                        <td>   </td>
-                        <td><h3>Total</h3></td>
-                        <td class="text-right"><h3><strong>{{cart.length * 30 + 6.94 | currency}}</strong></h3></td>
-                    </tr>
-                    <tr>
-                        <td>   </td>
-                        <td>   </td>
-                        <td>   </td>
-                        <td>
-                        <a href="#Movies" class="btn btn-default">
-                            <span class="glyphicon glyphicon-shopping-cart"></span> Continue Shopping
-                        </a></td>
-                        <td>
-                        <button type="button" class="btn btn-success" ng-click="order()">
-                            Order <span class="glyphicon glyphicon-play"></span>
-                        </button></td>
-                    </tr>
-                </tbody>
-            </table>
+                        <tr ng-repeat="movie in cart">
+
+                            <td class="col-sm-8 col-md-6">
+                                <div class="media">
+                                    <span class="pull-left"> <img class="media-object" src="{{movie.Poster}}" style="width: 100px; height: 100px;"> </span>
+                                    <div class="media-body">
+                                        <h4 class="media-heading"><a href="#">{{movie.Title}}</a></h4>
+                                        <h5 class="media-heading"> Actors : {{movie.Actors}} </h5>
+                                        <span>Genre: </span><span class="text-warning"><strong>{{movie.Genre}}</strong></span>
+                                        <h5 class="media-heading"> In Stock : {{movie.InStock}} </h5>
+                                    </div>
+                                </div></td>
+
+                                <td class="col-sm-1 col-md-1" style="text-align: center">
+                                <!--    <input type="text" class="form-control" id="qte" ng-model="movie.quantityInCart"> -->
+
+
+<div class="input-group spinner">
+    <input type="text" class="form-control" value="{{movie.quantityInCart}}"> 
+    <div class="input-group-btn-vertical">
+      <button class="btn btn-success" type="button" ng-click="addQuantity(movie._id)"><i class="fa fa-caret-up"></i></button>
+      <button class="btn btn-danger" type="button"  ng-click="removeQuantity(movie._id)"><i class="fa fa-caret-down"></i></button>    
+    </div>
+
+
+                          </td>
+                          <td class="col-sm-1 col-md-1 text-center"><strong>{{movie.Price | currency}}</strong></td>
+                          <td class="col-sm-1 col-md-1 text-center"><strong>{{movie.Price *  movie.quantityInCart| currency}}</strong></td>
+                          <td class="col-sm-1 col-md-1">
+                            <button type="button" class="btn btn-danger" ng-click="deleteFromCart(movie)">
+                                <span class="glyphicon glyphicon-remove"></span> Remove
+                            </button></td>
+                        </tr> <!-- end ng-repeat -->
+
+
+
+
+                        <tr>
+                            <td>   </td>
+                            <td>   </td>
+                            <td>   </td>
+                            <td><h5>Subtotal</h5></td>
+                            <td class="text-right"><h5><strong>  {{ Total() | currency}} </strong></h5></td>
+                        </tr>
+                        <tr>
+                            <td>   </td>
+                            <td>   </td>
+                            <td>   </td>
+                            <td><h5>Estimated shipping</h5></td>
+                            <td class="text-right"><h5><strong>$6.94</strong></h5></td>
+                        </tr>
+                        <tr>
+                            <td>   </td>
+                            <td>   </td>
+                            <td>   </td>
+                            <td><h3>Total</h3></td>
+                            <td class="text-right"><h3><strong>{{ Total() + 6.94 | currency}}</strong></h3></td>
+                        </tr>
+                        <tr>
+                            <td>   </td>
+                            <td>   </td>
+                            <td>
+
+                                <button type="button" class="btn btn-danger" ng-click="emptyCart()">
+                                    <span class="glyphicon glyphicon-trash"></span> Empty your Cart
+                                </button>
+
+                            </td>
+                            <td>
+                                <a href="#Movies" class="btn btn-default">
+                                    <span class="glyphicon glyphicon-shopping-cart"></span> Continue Shopping
+                                </a>
+
+                            </td>
+
+                            <td>
+                                <button type="button" class="btn btn-success" ng-click="order()">
+                                    <span class="glyphicon glyphicon-play"></span> Order Now
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div> <!-- full cart -->
+
+            <div ng-if="cart.length == 0" class ="text-center">
+
+                <img class="img-responsive center-block" src="assets\img\empty-cart.gif" alt="Empty Cart"> </br></br>
+
+                <a href="#Movies" class="btn btn-default">
+                    <span class="glyphicon glyphicon-shopping-cart"></span> Go Shopping
+                </a>
+
+            </div>
+
         </div>
     </div>
 </div>

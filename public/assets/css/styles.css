@@ -1,3 +1,40 @@
+
+
+
+
+.user-window{
+    border-left: 2px solid black;
+    height: 300px;
+}
+.username{
+    color: red;
+    font-weight: bold;
+}
+
+.chat-window{
+height: 500px;
+overflow-y: scroll;
+}
+
+
+.navbar-costum {
+    color: #3385ff;
+    background-color: #002db3;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.dropdown-menu > li > a {
+color:          #3385ff;
+    background-color: #002db3;
+font-weight: bold;
+}
+
+ul.nav li.dropdown:hover > ul.dropdown-menu {
+    display: block; 
+    font-weight: bold;   
+}
+
 body,html {
  height: 100%;
 }
@@ -158,3 +195,42 @@ body{
 #custom-search-input .glyphicon-search{
     font-size: 23px;
 }
+
+/* spinner Cart */
+
+.spinner {
+  width: 75px;
+}
+.spinner input {
+  text-align: right;
+}
+.input-group-btn-vertical {
+  position: relative;
+  white-space: nowrap;
+  width: 1%;
+  vertical-align: middle;
+  display: table-cell;
+}
+.input-group-btn-vertical > .btn {
+  display: block;
+  float: none;
+  width: 100%;
+  max-width: 100%;
+  padding: 8px;
+  margin-left: -1px;
+  position: relative;
+  border-radius: 0;
+}
+.input-group-btn-vertical > .btn:first-child {
+  border-top-right-radius: 4px;
+}
+.input-group-btn-vertical > .btn:last-child {
+  margin-top: -2px;
+  border-bottom-right-radius: 4px;
+}
+.input-group-btn-vertical i{
+  position: absolute;
+  top: 0;
+  left: 4px;
+}
+

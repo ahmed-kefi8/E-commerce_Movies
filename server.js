@@ -4,6 +4,8 @@ var bodyParser     = require('body-parser');
 var methodOverride = require('method-override');
 var httpServer     = require("http").createServer(app);
 var cors           = require('cors');
+var http           = require('http').Server(app);
+var io             = require('socket.io')(http);
 
 
 // set our port
@@ -18,11 +20,46 @@ app.use(bodyParser.json());
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true })); 
 
-// override with the X-HTTP-Method-Override header in the request. simulate DELETE/PUT
+// override with the X-HTTP-Method-Override header in the request.
 app.use(methodOverride('X-HTTP-Method-Override')); 
 
 //set the public folder of the app
 app.use(express.static(__dirname + "/public"));
+
+var users = [];
+io.on('connection', function(socket) {
+  var username = '';
+  console.log("A User has Connected!");
+  
+  socket.on('request-users', function(){
+    socket.emit('users', {users: users});
+  });
+  
+  socket.on('message', function(data){
+    io.emit('message', {username: username, message: data.message});
+  })
+  
+  
+  socket.on('add-user', function(data){
+
+      io.emit('add-user', {
+        username: data.username
+      });
+      username = data.username;
+      users.push(data.username);
+    
+  })
+
+
+
+
+  socket.on('disconnect', function(){
+    console.log(username + ' has disconnected!');
+    users.splice(users.indexOf(username), 1);
+    io.emit('remove-user', {username: username});
+  })
+});
+
 
 //load basic route for server
 require('./server/routes/auth_routes')(app);
@@ -40,7 +77,7 @@ app.use('/Movie_Store' , Movie_Store_Routes);
 
 
 // startup our app at http://localhost:PORT
-app.listen(PORT, function(){
+http.listen(PORT, function(){
 console.log("Server running on port " + PORT);
 });
 

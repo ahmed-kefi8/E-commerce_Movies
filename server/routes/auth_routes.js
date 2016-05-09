@@ -99,7 +99,7 @@ module.exports = function(app) {
      app.get('/auth/logout', function(req, res){
          console.log('logout');
         req.logout();
-        res.send(200);
+        res.sendStatus(200);
      });
 
 

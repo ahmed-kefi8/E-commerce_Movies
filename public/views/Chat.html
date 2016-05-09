@@ -1,0 +1,78 @@
+
+<div class="container" ng-controller="chatController" style="font-family:Verdana">
+    <div class="row">
+        <h3 class="text-center" > Movie Store CHAT ROOM </h3>
+        <br />
+        <div class="col-md-8">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    CHAT
+                </div>
+                <div class="panel-body chat-window" >
+                    <ul class="media-list">
+
+                        <li class="media" ng-repeat="message in messages">
+
+                            <div class="media-body">
+
+                                <div class="media">
+                                    <a class="pull-left" href="#">
+                                        <img class="media-object img-circle " src="" />
+                                    </a>
+                                    <div class="media-body" >
+                                        <span class="username">{{message.username}} :</span>
+                                        <span class="message">{{message.message}}</span>
+                                        <br />
+                                        <small class="text-muted" class="username">{{message.username}} | {{date | date:'yyyy-MM-dd HH:mm:ss'}}
+                                            <hr /></small> 
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="panel-footer">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Enter Message Here..." ng-model="msg" ng-keypress="SendEnterKey($event, msg)"/>
+                            <span class="input-group-btn">
+                            <button class="btn btn-success" type="button" ng-click="sendMessage(msg)" >SEND</button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+              <div class="panel panel-primary">
+                <div class="panel-heading"><i class="fa fa-users fa-lg" aria-hidden="true"></i>
+
+                 ONLINE USERS
+             </div>
+             <div class="panel-body chat-window">
+                <ul class="media-list">
+
+                    <li class="media" ng-repeat="user in users">
+
+                        <div class="media-body">
+
+                            <div class="media">
+                                <a class="pull-left" href="#">
+                                    <img class="media-object img-circle" style="max-height:40px;" src="" />
+                                </a>
+                                <div class="media-body" >
+                                    <h5>{{user}} </h5>
+
+                                    <!--   <small class="text-muted"></small> -->
+                                </div>
+                            </div>
+
+                        </div>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+</div>
+</div>
