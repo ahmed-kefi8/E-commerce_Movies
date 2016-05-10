@@ -69,15 +69,16 @@ app.use(expressValidator());
 
 //load basic route for server
 require('./server/routes/auth_routes')(app);
-//require('./server/routes/movies_routes')(app);
 require('./server/routes/basic')(app);
 
 
 
 
-var Movie_Store_Routes = require('./server/routes/movies_routes');
+var movies_routes = require('./server/routes/movies_routes');
+var users_routes = require('./server/routes/users_routes');
 
-app.use('/Movie_Store' , Movie_Store_Routes);
+app.use('/Movie_Store' , movies_routes);
+app.use('/Movie_Store' , users_routes);
 
 
 
