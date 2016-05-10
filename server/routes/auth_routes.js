@@ -47,7 +47,7 @@ module.exports = function(app) {
     ));
 
 
-
+ 
 
     passport.serializeUser(function(user, done) {
         done(null, user.id);
@@ -61,7 +61,7 @@ module.exports = function(app) {
 
     function isAuthenticated(req,res,next){
         if(req.isAuthenticated())return next();
-         res.send(401);
+         res.sendStatus(401);
     }
 
 
@@ -74,15 +74,60 @@ module.exports = function(app) {
         res.json(req.user);
     });
 
+
+
     app.post('/auth/signup',function(req,res){
 
     
+
+
+
+    req.checkBody('username', 'Username is required').notEmpty();
+    req.checkBody('firstName', 'First Name is required').notEmpty();
+    req.checkBody('lastName', 'Last Name is required').notEmpty();
+    req.checkBody('email', 'Email is required').notEmpty();
+    req.checkBody('email', 'Email is not valid').isEmail();
+    req.checkBody('password', 'Password is required').notEmpty();
+    req.checkBody('password2', 'Passwords do not match').equals(req.body.password);
+
+
+
+
+var errors = req.validationErrors();
+
+            var err = {};
+            for(var i = 0; i < errors.length; i++) {
+                var e = errors[i];
+
+                var param, msg;
+                for(var key in e) {
+                    if(key == 'param') param = e[key];
+                    if(key == 'msg') msg = e[key];
+                }
+                err[param] = msg;
+            }
+
+
+
+  if (errors) {
+    res.send(err);
+    return;
+  }
+
+    else {
+
+
 
         var u =  new User();
 
     for (prop in req.body) {
       u[prop] = req.body[prop];
     }
+
+
+
+
+
 
     var hash = bcrypt.hashSync(u.password, 10);
 
@@ -95,6 +140,7 @@ module.exports = function(app) {
                 res.json({'alert':'Registration success'});
             }
         });
+    }
     });
 
      app.get('/auth/logout', function(req, res){

@@ -1,5 +1,3 @@
-
-
 Movie_Store_App.controller('authController', ['$scope','$http','$location','$rootScope', function($scope,$http,$location,$rootScope) {
 
     $scope.user  = {username:'',password:''};
@@ -10,21 +8,25 @@ Movie_Store_App.controller('authController', ['$scope','$http','$location','$roo
         $http.post('/auth/login', user).
             success(function(data) {
                 $rootScope.loggeduser = data;
-                $scope.alert = 'Login Success'
+                $scope.alert = 'Login Success';
                // $location.path('/user');
             }).
             error(function() {
-                $scope.alert = 'Login failed'
+                $scope.alert = 'Login failed';
             });
 
     };
 
     $scope.signup = function(user){
+        $scope.errors = {};
 
         $http.post('/auth/signup', user).
             success(function(data) {
-                console.log("http lunched");
-                $scope.alert = data.alert;
+                if(data.alert)
+                {$scope.alert = data.alert;}
+                else
+                {$scope.errors = data;
+                console.log(data);}
              }).
             error(function() {
                 console.log("http failed");

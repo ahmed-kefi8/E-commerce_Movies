@@ -1,11 +1,12 @@
-var express        = require('express');
-var app            = express();
-var bodyParser     = require('body-parser');
-var methodOverride = require('method-override');
-var httpServer     = require("http").createServer(app);
-var cors           = require('cors');
-var http           = require('http').Server(app);
-var io             = require('socket.io')(http);
+var express          = require('express');
+var app              = express();
+var bodyParser       = require('body-parser');
+var methodOverride   = require('method-override');
+var httpServer       = require("http").createServer(app);
+var cors             = require('cors');
+var http             = require('http').Server(app);
+var io               = require('socket.io')(http);
+var expressValidator = require('express-validator');
 
 
 // set our port
@@ -53,12 +54,17 @@ io.on('connection', function(socket) {
 
 
 
+
   socket.on('disconnect', function(){
     console.log(username + ' has disconnected!');
     users.splice(users.indexOf(username), 1);
     io.emit('remove-user', {username: username});
   })
 });
+
+
+// Express Validator
+app.use(expressValidator());
 
 
 //load basic route for server
