@@ -2,12 +2,7 @@ Movie_Store_App.controller('MoviesController',['$scope', '$http','$filter','Movi
 
   
   
-/* récupération des données dans la variable movies */
-/*$http({method: 'GET', url: 'http://localhost:3000/Movie_Store'}).success(function(data){
-console.log(data);
-$scope.movies = data.movies; // response data
 
-}); */
 
 $scope.movies = MovieFactory.query();
 
@@ -30,7 +25,6 @@ $scope.numberOfPages=function(){
 
 /*on a déja un filtre 'limitTo' dans Angular,
 on va construire un filtre pour s'avoir ou débuter la prochiane page*/
-
 Movie_Store_App.filter('startFrom', function() {
     return function(input, start) {
         start = +start; //parse to int

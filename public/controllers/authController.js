@@ -33,15 +33,6 @@ Movie_Store_App.controller('authController', ['$scope','$http','$location','$roo
 
     };
 
-    $scope.userinfo = function() {
-        $http.get('/auth/currentuser').
-            success(function (data) {
-                $scope.loggeduser = data;
-            }).
-            error(function () {
-                $scope.alert = 'Login failed'
-            });
-    };
 
 
 
@@ -50,7 +41,7 @@ Movie_Store_App.controller('authController', ['$scope','$http','$location','$roo
             .success(function() {
                 console.log("logout fired");
                 $rootScope.loggeduser = undefined;
-                $location.path('/signin');
+                $location.path('/');
 
             })
             .error(function() {

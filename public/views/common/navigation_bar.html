@@ -4,7 +4,7 @@
 <nav class = "navbar navbar-costum navbar-static-top" ng-controller="authController">
 	<div class = "container" >
 		<!-- Ajout de la marque du site le brand a gauche-->
-		<a href="#Home" class = "navbar-brand"> Movie Store </a>
+		<a href="#Home" class = "navbar-brand"> <img src="assets/img/logo.jpg" height="50" width="50" class="logo-img"> </a>
 		
 		<!-- Ajout d'un boutton pour rassembler les pages quand la fenêtre devient petite
 			le .navHeaderCollapse c'est comme un id pour cibler la div en question contenant la ul
@@ -23,6 +23,7 @@
 				<ul class="nav navbar-nav">
 					<li class = "active"><a href = "#Home"> Home </a></li>
 
+
 					<li class="dropdown" >
 						<a <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href = ""> Admin <span class="caret"></span></a>
 						<ul class="dropdown-menu navbar-nav navbar-costum">
@@ -33,8 +34,34 @@
 					</li>
 
 					<li><a href = "#Movies"> Movies </a></li>
-					<li><a href = "#About_US"> About US </a></li>
+				
 					<li><a href = "#Chat"><i class="fa fa-weixin fa-lg" ></i> Chat </a></li>
+
+
+
+
+
+						<li ng-if="!loggeduser"><a href = "#Cart"> <span class="glyphicon glyphicon-shopping-cart"></span>
+							0 items $0.00 
+						</a>
+					</li>
+
+
+
+
+
+
+
+
+
+						<li ng-if="loggeduser" li ng-controller="CartController" ><a href = "#Cart"> <span class="glyphicon glyphicon-shopping-cart"></span>
+							{{ TotalItems() }} <ng-pluralize count="TotalItems()" when="{1: 'item', 'other':'items'}"></ng-pluralize> {{ Total() + 6.94  | currency }}
+						</a>
+					</li>
+
+
+	<li><a href = "#About_US"> About US </a></li>
+
 				</ul>
 
 
@@ -51,10 +78,7 @@
 
 					<ul class = "nav navbar-nav navbar-right">
 
-						<li ng-controller="CartController" ><a href = "#Cart"> <span class="glyphicon glyphicon-shopping-cart"></span>
-							{{ TotalItems() }} <ng-pluralize count="TotalItems()" when="{1: 'item', 'other':'items'}"></ng-pluralize> {{ Total() + 6.94  | currency }}
-						</a>
-					</li>
+
 					<li><a href="#Home" ng-click="logout()"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
 				</ul>
 			</div>

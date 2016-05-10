@@ -1,6 +1,7 @@
-
-
-
+.logo-img {
+    position: relative;
+    top: -14px;
+}
 
 .user-window{
     border-left: 2px solid black;

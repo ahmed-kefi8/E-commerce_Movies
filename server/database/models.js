@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+//mongoose.connect('mongodb://localhost/Movie_Store');
 mongoose.connect('mongodb://ahmed:12345@ds011462.mlab.com:11462/movie_store');
 
 var MovieSchema = mongoose.Schema(

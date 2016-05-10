@@ -13,11 +13,12 @@ module.exports = function(app) {
 
     app.use(session({
         store: new MongoStore({
-            url: 'mongodb://localhost/Movie_Store'
+            //url: 'mongodb://localhost/Movie_Store'
+            url: 'mongodb://ahmed:12345@ds011462.mlab.com:11462/movie_store'
          }),
         secret: 'codetutorialsecret',
-        resave:true,
-        saveUninitialized:true
+        resave:false,
+        saveUninitialized:false
     }));
 
     app.use(passport.initialize());
@@ -60,7 +61,7 @@ module.exports = function(app) {
 
     function isAuthenticated(req,res,next){
         if(req.isAuthenticated())return next();
-         res.redirect('/');
+         res.send(401);
     }
 
 
