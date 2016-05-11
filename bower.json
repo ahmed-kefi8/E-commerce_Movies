@@ -1,0 +1,27 @@
+{
+  "name": "E-commerce_Movies",
+  "description": "a Movie Store App",
+  "main": "server.js",
+  "authors": [
+    "KEFI AHMED"
+  ],
+  "license": "UNLICENSED",
+  "keywords": [
+    "angular",
+    "node",
+    "express",
+    "E_commerce"
+  ],
+  "homepage": "https://github.com/ahmedkefi-craftacademy/E-commerce_Glasses",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-ui-calendar": "^1.0.1",
+    "socket.io": "^1.4.6"
+  }
+}

@@ -36,20 +36,31 @@ username : String,
 firstName : String,
 lastName : String,
 password : String,
-cart : []
+cart : [],
+reserved_Events: []
 	});
 
-
 UserSchema.set('versionKey', false);
+
+
+var EventSchema = mongoose.Schema(
+	{
+title : String,
+start : String,
+end : String,
+movie_title : String,
+state : String
+	});
 
 
 
 
 var Movie = mongoose.model('Movie', MovieSchema);
 var User = mongoose.model('User', UserSchema);
-
+var Event = mongoose.model('Event', EventSchema);
 
 module.exports = {
   Movie: Movie,
-  User: User
+  User: User,
+  Event: Event
 };

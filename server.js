@@ -76,10 +76,11 @@ require('./server/routes/basic')(app);
 
 var movies_routes = require('./server/routes/movies_routes');
 var users_routes = require('./server/routes/users_routes');
+var events_routes = require('./server/routes/events_routes');
 
 app.use('/Movie_Store' , movies_routes);
 app.use('/Movie_Store' , users_routes);
-
+app.use('/Movie_Store' , events_routes);
 
 
 

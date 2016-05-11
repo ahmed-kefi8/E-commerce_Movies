@@ -8,13 +8,14 @@
     "test": ""
   },
   "author": "KEFI AHMED",
-  "license": "",
+  "license": "UNLICENSED",
   "dependencies": {
     "angular-resource": "^1.5.5",
     "bcryptjs": "^2.3.0",
     "body-parser": "^1.15.1",
     "connect": "^3.4.1",
     "connect-mongo": "^1.1.0",
+    "connect-roles": "^3.1.2",
     "cors": "^2.7.1",
     "express": "^4.13.4",
     "express-session": "^1.13.0",

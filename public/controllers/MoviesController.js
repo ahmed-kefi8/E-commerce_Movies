@@ -8,8 +8,6 @@ $scope.movies = MovieFactory.query();
 
 
 
-
-
 /* La pagination, on va limiter le nombre de movies par page à 6 */
 $scope.currentPage = 0;
 $scope.pageSize = 4;

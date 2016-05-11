@@ -12,6 +12,10 @@
                 templateUrl : 'views/Chat.html',
             })
 
+            .when('/ReservationPlanning', {
+                templateUrl: 'views/Reservation_Planning.html',
+            })
+
             .when('/signin', {
                 templateUrl: 'views/signin.html',
                 controller: 'authController'
