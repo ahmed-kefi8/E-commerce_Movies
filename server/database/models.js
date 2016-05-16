@@ -46,10 +46,13 @@ UserSchema.set('versionKey', false);
 var EventSchema = mongoose.Schema(
 	{
 title : String,
-start : String,
-end : String,
+start : Date,
+end : Date,
 movie_title : String,
-state : String
+movie_id : String,
+state : String,
+duration : String,
+url : String
 	});
 
 

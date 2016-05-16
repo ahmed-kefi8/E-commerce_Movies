@@ -3,8 +3,11 @@
 <!-- navbar de couleur noir 'inverse' et fixée en haut de la page-->
 <nav class = "navbar navbar-costum navbar-static-top" ng-controller="authController">
 	<div class = "container" >
+
+
 		<!-- Ajout de la marque du site le brand a gauche-->
 		<a href="#Home" class = "navbar-brand"> <img src="assets/img/logo.jpg" height="50" width="50" class="logo-img"> </a>
+
 		
 		<!-- Ajout d'un boutton pour rassembler les pages quand la fenêtre devient petite
 			le .navHeaderCollapse c'est comme un id pour cibler la div en question contenant la ul
@@ -21,8 +24,12 @@
 
 
 				<ul class="nav navbar-nav">
+				
+					
+			
+					
+					<li class = "username2" ng-if="loggeduser"> {{loggeduser.username}} </li>
 					<li class = "active"><a href = "#Home"> Home </a></li>
-
 
 					<li class="dropdown" >
 						<a <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href = ""> Admin <span class="caret"></span></a>
@@ -35,7 +42,8 @@
 						</ul>
 					</li>
 
-					<li><a href = "#Movies"> Movies </a></li>
+					<li><a href = "#Movies"> Movies </a></li>.
+					<li><a href = "#Categories"> Categories </a></li>
 				
 					<li><a href = "#Chat"><i class="fa fa-weixin fa-lg" ></i> Chat </a></li>
 

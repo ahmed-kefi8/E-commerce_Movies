@@ -1,0 +1,40 @@
+<div class ="container" ng-controller="AdminEventsController">
+  <div class="row">
+    
+        
+        <div class="col-md-12">
+        <div class="table-responsive">
+              <table id="mytable" class="table table-bordred table-striped">
+                   
+    <tbody>
+    
+    <tr>
+    <td> Event Title </td>
+    <td> <input type="text" ng-model="ev.title" size="80"> </td>
+    </tr>
+
+    <tr>
+    <td> Movie </td>
+    <td> <input type="text" ng-model="ev.movie_title" size="80"> </td>
+    </tr>
+
+    <tr>
+    <td> Start Date </td>
+    <td> <input type="datetime-local" ng-model="ev.start" size="80"> </td>
+    </tr>
+
+    <tr>
+    <td> End Date </td>
+    <td> <input type="datetime-local" ng-model="ev.end" size="80"> </td>
+    </tr>
+
+    </tbody>
+        
+</table>
+
+<button type="submit" class="btn btn-success" ng-click="updateEvent()">Save</button>
+
+</div>
+</div>
+</div>
+</div>

@@ -1,33 +1,4 @@
-Movie_Store_App.controller('Res_PlannigController', ['$scope', '$timeout','EventFactory','$rootScope', function ($scope, $timeout, EventFactory, $rootScope) {
-/*
-    var date = new Date();
-    var d = date.getDate();
-    var m = date.getMonth();
-    var y = date.getFullYear();
-
-*/
-
-/*
-
-    $scope.events = [{
-        title: 'Move or Resize me',
-        start: new Date(y, m, d, 8, 0),
-        end: new Date(y, m, d, 10, 0)
-    }];
-
-*/
-$scope.events = [];
-
-EventFactory.query().$promise.then(function(events) {
-
-  $scope.eventSources = angular.toJson(events);
-  return $scope.eventSources;
-
-});
-
-
-
-$scope.eventSources = [$scope.events];
+Movie_Store_App.controller('Res_PlannigController', ['$scope', '$timeout','EventFactory','$cookies','$q','$compile','uiCalendarConfig','$rootScope','$location','$route','MovieFactory', function ($scope, $timeout, EventFactory, $cookies, $q,$compile,uiCalendarConfig,$rootScope,$location,$route,MovieFactory) {
 
 
 
@@ -36,32 +7,22 @@ $scope.eventSources = [$scope.events];
 
 
 
-
-
-
-
-    
-
-
+    $scope.eventSources = [$rootScope.evt];
+  
+    $scope.movies = MovieFactory.query();
     $scope.addEvent = function(event){
 
-    alert("Event added");
     event.state = "free";
- return EventFactory.save($scope.event);
-
-
+    event.duration = moment(event.end).diff(moment(event.start), 'hours');
+    event.url='';
+    event.movie_title = $scope.mve.Title;
+    event.movie_id = $scope.mve._id;
+    EventFactory.save($scope.event);
+    $rootScope.evt.push(event);
+    $route.reload()
     };
 
-
-
-
-
-
-
-
-
-
-
+    
     $scope.alertEvent = function (event, jsEvent, ui, view) {
         
         $timeout(function() {
@@ -73,23 +34,26 @@ $scope.eventSources = [$scope.events];
         sEvent.isDirty = true;
         });
     };
-    
+
+
     function findCalendarEvent(event) {
         
         for (var i = 0;i < $scope.eventSources.length;i++){
             for(var x = 0;x < $scope.eventSources[i].length;x++){
                 if ($scope.eventSources[i][x]._id === event._id) {
+                    EventFactory.update($scope.eventSources[i][x]);
                     return $scope.eventSources[i][x];
                 }
             }
         }
         
-    }
+    };
+
 
     $scope.calendarConfig = {
         calendar: {
             allDaySlot: false,
-            defaultView: 'agendaWeek',
+            defaultView: 'month',
             timezone: 'local',
             editable: true,
             eventLimit: 3,
@@ -102,5 +66,6 @@ $scope.eventSources = [$scope.events];
             eventDragStop: $scope.alertEvent
         }
     };
+
 
 }]);

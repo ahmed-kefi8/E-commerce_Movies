@@ -16,6 +16,10 @@
                 templateUrl: 'views/Reservation_Planning.html',
             })
 
+            .when('/Upd_Del_Event', {
+                templateUrl: 'views/Upd_Del_Event.html',
+            })
+
             .when('/signin', {
                 templateUrl: 'views/signin.html',
                 controller: 'authController'
@@ -38,8 +42,16 @@
                 templateUrl : 'views/Movies.html',
             })
 
+            .when('/Categories', {
+                templateUrl : 'views/Categories.html',
+            })
+
             .when('/EditMovie/:_id', {
                 templateUrl : 'views/EditMovie.html',
+            })
+
+            .when('/EditEvent/:_id', {
+                templateUrl : 'views/EditEvent.html',
             })
 
             .when('/EditUser/:_id', {

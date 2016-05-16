@@ -1,29 +1,33 @@
-
-<div class ="container" ng-controller="Res_PlannigController" ng-init="initf()">
-<div class="row"><h2 class="title">Movie Premiére Planning and duration</h2></div>
+<div class ="container" ng-controller="Res_PlannigController">
+<div class="row"><h2 class="title">Movie Projection Planning & Duration</h2></div>
 </br>
-	<div class="row">
 
-	<div class='col-md-6'>
-	<br/><br/><br/>
+    <div class="row"> <!-- div row2 -->
 
+    <div class='col-md-6'>
+
+
+
+
+
+<div class="panel panel-success" > <!-- div panel -->
+        <div class="panel-heading">
+            <div class="panel-title Premi_Res2">Add Movie Projection : </div>
+        </div>
+        <div class="panel-body">
 
 <form  class="form-horizontal" role="form">
-
-
-
-
-
+</br>
                     <div class="form-group">
-                        <label for="Username" class="col-md-3 control-label">Event Title :</label>
+                        <label for="Username" class="col-md-3 control-label">Projection Title</label>
                         <div class="col-md-9">
                         
-					<input type="text" class="form-control" ng-model="event.title" >
+                    <input type="text" class="form-control" ng-model="event.title" >
 
                         </div>
                     </div>
 
-
+</br>
                     <div class="form-group">
                         <label for="firstname" class="col-md-3 control-label">Start Date :</label>
                         <div class="col-md-9">
@@ -31,7 +35,7 @@
 
                         </div>
                     </div>
-
+</br>
                     <div class="form-group">
                         <label for="lastname" class="col-md-3 control-label">End Date :</label>
                         <div class="col-md-9">
@@ -39,19 +43,21 @@
 
                         </div>
                     </div>
-
+</br>
                     <div class="form-group">
                         <label  class="col-md-3 control-label">Movie Title :</label>
                         <div class="col-md-9">
-                            <input type="text" class="form-control" ng-model="event.movie_title">
+                            <select class="form-control" ng-model="mve" ng-options="movie as movie.Title for movie in movies">
+          <option value="">-- Select One --</option>
+     </select>
 
                         </div>
                     </div>
-                    
                     <div class="form-group">
                         <!-- Button -->
                         <div class="col-md-offset-3 col-md-9">
-                            <button id="btn-signup" type="button" class="btn btn-success btn-lg" ng-click="addEvent(event)">  Add Event </button>
+                            <button id="btn-signup" type="button" class="btn btn-success btn-lg" ng-click="addEvent(event)">  Add Projection </button>
+                            
 
                         </div>
                     </div>
@@ -60,20 +66,24 @@
 
                 </form>
 
+</div>
+    </div><!-- div panel -->
+<a href="#Upd_Del_Event" class="btn btn-info pull-right btn-lg">  Update/Delete Projection </a>
 
 
 
-	</div>
 
 
 
-	
 
-	   
+
+
+    </div>
         
 
 
 
+        <div class='calendar col-md-6 cal_style' ui-calendar="calendarConfig.calendar" ng-model="eventSources" ></div>
 
 
 
@@ -84,8 +94,7 @@
 
 
 
-        <div class='calendar col-md-6 cal_style' ui-calendar="calendarConfig.calendar" ng-model="eventSources"></div>
-  
+    </div> <!-- div row2 -->
+</div> <!-- div container -->
 
-	</div>
-</div>
+

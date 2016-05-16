@@ -1,5 +1,6 @@
 
-Movie_Store_App.controller('Movie_detailController',['$scope','$http','$filter','$routeParams','MovieFactory','$rootScope','$cookies','UserFactory','$location', function($scope, $http, $filter, $routeParams,MovieFactory , $rootScope, $cookies, UserFactory, $location){
+Movie_Store_App.controller('Movie_detailController',['$scope','$http','$filter','$routeParams','MovieFactory','$rootScope','$cookies','UserFactory','$location','EventFactory',
+ function($scope, $http, $filter, $routeParams,MovieFactory , $rootScope, $cookies, UserFactory, $location,EventFactory){
 
 
 
@@ -8,6 +9,7 @@ Movie_Store_App.controller('Movie_detailController',['$scope','$http','$filter',
 
 
 $scope.movie = MovieFactory.get({ id: $routeParams._id }); //Get a single movie
+
 
 
 $scope.quantity = 1;
@@ -54,6 +56,47 @@ var bool = false;
 		}
 
 	}
+
+
+$scope.rows = new Array(10);
+
+$scope.movie_events = [];
+
+$scope.movie.$promise.then(function (result) {
+    
+
+    EventFactory.query().$promise.then(function(data) {
+    var e = angular.toJson(data);
+    var m = JSON.parse(e);
+
+for (var i = 0; i < m.length; i++) {
+
+
+
+	if(m[i].movie_id == result._id)
+      {$scope.movie_events.push(m[i]);}
+}
+});
+
+});
+
+
+
+
+$scope.BookEvent = function(event){
+
+event.state ="Booked By " + $rootScope.loggeduser.username;
+EventFactory.update(event);
+
+
+};
+
+
+
+
+
+
+
 
 
 }]);
