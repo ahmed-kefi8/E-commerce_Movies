@@ -1,3 +1,20 @@
+.rcorners {
+    border-radius: 8px;
+    border: 3px solid black;
+    padding: 15px; 
+    margin-left: auto;
+    margin-right: auto;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+}
+
+
+.center{
+padding-right: 15px;
+}
+
+
 .img-hover img {
     -webkit-transition: all .3s ease; /* Safari and Chrome */
     -moz-transition: all .3s ease; /* Firefox */
@@ -38,6 +55,11 @@
   line-height: 50px;
  }
 
+ .price{
+  color : #e60000;
+  font-size: 15px;
+  font-weight: bold;
+ }
 
 .cal_style{
 background-color: white;

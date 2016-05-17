@@ -1,6 +1,4 @@
-
-<div class ="container" ng-controller="MoviesController"> <!-- div container-->
-
+<div class="container" ng-controller="MoviesCategoryController">
 	<div class="row"> <!-- div row 1-->
         <div class="col-md-6">
     		<h2>Search a movie</h2>
@@ -25,8 +23,13 @@
 
 
 <hr>
-	<div class ="row"> <!-- div row 2-->
-           <div dir-paginate="movie in movies | filter : search | filter:q | itemsPerPage: pageSize" current-page="currentPage">
+
+
+
+
+
+					<div class ="row"> <!-- div row 2-->
+           <div dir-paginate="movie in moviesInGenre | filter : search | filter:q | itemsPerPage: pageSize" current-page="currentPage">
 
 			
 
@@ -53,7 +56,6 @@
     </div> <!-- div row 2-->
 
 
-
 		
 <!-- Pagination -->
 <div class ="row"> <!-- div row 3-->
@@ -63,8 +65,7 @@
 
 
     </div> <!-- div row 3-->
-    
 
 
 
-</div> <!-- div container-->
+</div>

@@ -1,31 +1,52 @@
-Movie_Store_App.controller('MoviesController',['$scope', '$http','$filter','MovieFactory', function($scope, $http, $filter, MovieFactory){
+Movie_Store_App.controller('MoviesController',['$scope', '$http','MovieFactory','$rootScope','UserFactory','$location', function($scope, $http, MovieFactory,$rootScope,UserFactory,$location){
 
   
   
-
-
 $scope.movies = MovieFactory.query();
 
+$scope.genres=["Action","Adventure","Animation","Biography","Comedy","Crime","Drama","Family","Fantasy","History","Horror","Music",
+				"Musical","Mystery","Romance","Sci-Fi","Sport","Thriller","War","Western"];
 
 
-/* La pagination, on va limiter le nombre de movies par page à 6 */
-$scope.currentPage = 0;
-$scope.pageSize = 4;
-$scope.numberOfPages=function(){
-        return Math.ceil($scope.movies.length/$scope.pageSize);                
-    }
+
+$scope.currentPage = 1;
+$scope.pageSize = 8;
+
+
+
+$scope.addToCart = function(movie){
+
+var bool = false;
+
+	for(var i=0 ; i < $rootScope.cart.length ; i++)
+		{ if ($rootScope.cart[i]._id == movie._id)
+			{ bool = true; 
+				break;}
+		}
+
+	if(bool)
+		{alert("The movie : "+ movie.Title + " is already in your Cart !");}
+
+	else
+		{
+		$rootScope.loggeduser.cart.push({movie_id : movie._id , quantity : 1});
+
+		UserFactory.update($rootScope.loggeduser);
+
+		$location.path('/Cart/'+$rootScope.loggeduser._id);
+
+		}
+
+	}
+
+
+
+
+
+
+
+
+
 
 }]);
 
-
-
-
-
-/*on a déja un filtre 'limitTo' dans Angular,
-on va construire un filtre pour s'avoir ou débuter la prochiane page*/
-Movie_Store_App.filter('startFrom', function() {
-    return function(input, start) {
-        start = +start; //parse to int
-        return input.slice(start);
-    }
-});

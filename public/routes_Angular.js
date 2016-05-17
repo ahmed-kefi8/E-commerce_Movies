@@ -66,6 +66,11 @@
                 templateUrl : 'views/Movie_detail.html',
             })
 
+            .when('/MoviesCategory/:genre', {
+                templateUrl : 'views/MoviesCategory.html',
+            })
+
+
             .when('/Cart', {
 
                 templateUrl : 'views/Cart.html',
