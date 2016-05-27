@@ -19,4 +19,10 @@ $scope.AddMovie = function(movie){
 
 };
 
+
+$scope.currentPage = 1;
+$scope.pageSize = 10;
+
+
+
 }]);

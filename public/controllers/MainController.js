@@ -11,6 +11,7 @@ Movie_Store_App.controller('mainController', ['$scope','$http','$location', '$co
         $http.get('/auth/currentuser').
         success(function (data) {
             $rootScope.loggeduser = data;
+            $rootScope.loggeduser.birth_date = new Date($rootScope.loggeduser.birth_date);
         }).
         error(function () {
             $scope.alert = 'Login failed'

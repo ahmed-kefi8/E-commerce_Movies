@@ -2,40 +2,58 @@
 	<div class="row">
 		
         
-        <div class="col-md-12">
-        <h4> Users </h4>
+        <div class="col-md-10 col-centered">
+        <br>
+        <span class="my_title"> Users :</span>
+        <br><br>
         <div class="table-responsive">
 
-                
-              <table id="mytable" class="table table-bordred table-striped">
-                   
-                   <thead>
-                   <th>User Id</th>
+<b>
+              <table id="mytable" class="table table-bordred" style="background-color:white;">
+                   <thead style="font-size:18px;color:#0000ff;">
+                   <th>Username</th>
+                   <th>Photo</th>
                     <th> Email </th>
-                    <th> Password </th>
                       <th>Edit</th>
                       <th>Delete</th>
                    </thead>
     <tbody>
     
-    <tr ng-repeat="user in users">
-    <td> {{ user._id }} </td>
-    <td> {{ user.email }} </td>
-        <td> {{ user.password }} </td>
-    <td><p data-placement="top" data-toggle="tooltip" title="Edit"><a class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ng-href="#/EditUser/{{user._id}}" ><span class="glyphicon glyphicon-pencil"></span></a></p></td>
-    <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ng-click="deleteUser(user._id)" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
+    <tr dir-paginate="user in users | itemsPerPage: pageSize" current-page="currentPage">
+    <td style="vertical-align:middle;"> {{ user.username }} </td>
+    <td>  <img class="img-rounded" src="{{ user.photo }}" height="50" width="50"> </td>
+    <td style="vertical-align:middle;"> {{ user.email }} </td>
+
+    <td style="vertical-align:middle;"> <p data-placement="top" data-toggle="tooltip" title="Edit"><a class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ng-href="#/EditUser/{{user._id}}" ><span class="glyphicon glyphicon-pencil"></span></a></p></td>
+    <td style="vertical-align:middle;"><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ng-click="deleteUser(user._id)" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
     </tr>
     
     </tbody>
         
 </table>
+</b>
+<span class="pull-right">
+                        <label style="color:white;">Users per page:</label>
+                        <input type="number" min="1" max="100" class="pagenumber" ng-model="pageSize">
+                </span>
 
-<div class="clearfix"></div>
-
-<!-- Pagination -->
+        <!-- Pagination -->
                 
             </div>
             
         </div>
+
+
+
+        <!-- Pagination -->
+<div class ="row"> <!-- div row 2-->
+    <div class="text-center">
+      <dir-pagination-controls boundary-links="true" on-page-change="pageChangeHandler(newPageNumber)"></dir-pagination-controls>
+  </div>
+
+
+</div> <!-- div row 2-->
+
+
 	</div>
 </div>

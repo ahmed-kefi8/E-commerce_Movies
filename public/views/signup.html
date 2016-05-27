@@ -1,10 +1,11 @@
+    <div class="container" ng-controller="authController">
     <div id="signupbox" style="margin-top:50px" class="mainbox col-md-7 col-md-offset-3 col-sm-8 col-sm-offset-2">
         <div class="panel panel-info">
             <div class="panel-heading">
                 <div class="panel-title">Sign Up</div>
             </div>
             <div class="panel-body" >
-                <form id="signupform" class="form-horizontal" role="form">
+                <form id="signupform" name="form" class="form-horizontal" role="form">
 
 
 
@@ -21,10 +22,24 @@
                         <div class="col-md-9">
                             <input type="text" class="form-control" ng-model="user.username" placeholder="Username">
                             <span class ="error">{{errors.username}}</span>
+                            <span class ="error">{{errors.usernameNotUnique}}</span>
                         </div>
                     </div>
+<!--
+                    <div class="form-group">
+                    <label for="Avatar" class="col-md-3 control-label">Profile pic :</label>
+                        <div class="col-md-9">
 
+                              <input type="file" class="btn btn-info" ngf-select ng-model="user.profilePic" name="profilePic"    
+                                     accept="image/*" ngf-max-size="2MB" required
+                                     ngf-model-invalid="errorFile">
+                              <span class ="error"><i ng-show="form.profilePic.$error.maxSize">File too large 
+                                  {{errorFile.size / 1000000|number:1}}MB: max 2MB</i></span>
+                            <img ng-show="form.profilePic.$valid" ngf-thumbnail="user.profilePic" class="thumb" height="120" width="120"> <button ng-click="user.profilePic= null" ng-show="user.profilePic">Remove</button>
 
+                        </div>
+                    </div>
+-->
                     <div class="form-group">
                         <label for="firstname" class="col-md-3 control-label"><span class="required_star">*</span>First Name :</label>
                         <div class="col-md-9">
@@ -46,25 +61,47 @@
                         <div class="col-md-9">
                             <input type="text" class="form-control" ng-model="user.email" placeholder="Email Address">
                             <span class ="error">{{errors.email}}</span>
+                            <span class ="error">{{errors.emailNotUnique}}</span>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="password" class="col-md-3 control-label"><span class="required_star">*</span>Password :</label>
+
                         <div class="col-md-9">
-                            <input type="password" class="form-control" ng-model="user.password" placeholder="Password">
+
+                            <input type="{{inputType}}" class="form-control" ng-model="user.password" placeholder="Password">
+                            <ng-password-meter password="user.password" strength="strenth" inner-class="progress-bar"></ng-password-meter>
+
                             <span class ="error">{{errors.password}}</span>
+                            <span class ="error">{{errors.weakPass}}</span>
                         </div>
+
+
+
                     </div>
 
 
                     <div class="form-group">
                         <label for="password" class="col-md-3 control-label">Confirm Password</label>
                         <div class="col-md-9">
-                            <input type="password" class="form-control" ng-model="user.password2" placeholder="Confirm Password">
+                            <input type="{{inputType}}" class="form-control" ng-model="user.password2" placeholder="Confirm Password">
                             <span class ="error">{{errors.password2}}</span>
                         </div>
                     </div>
+
+
+                    <div class="form-group">
+                          <label for="checkbox"  class="col-md-3 control-label" ng-if="passwordCheckbox">Hide password</label>
+                          <label for="checkbox"  class="col-md-3 control-label" ng-if="!passwordCheckbox">Show password</label>  
+
+                        <div class="col-md-9">
+                          <input type="checkbox" id="checkbox" ng-model="passwordCheckbox" ng-click="hideShowPassword()" class="big-checkbox">
+                        </div>
+                    </div>
+
+
+
 
 
 
@@ -96,3 +133,4 @@
 
 
     </div>
+</div>

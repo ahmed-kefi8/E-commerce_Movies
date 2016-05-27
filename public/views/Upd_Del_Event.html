@@ -2,14 +2,16 @@
 	<div class="row">
 		
         
-        <div class="col-md-12">
-        <h4> Events </h4>
+        <div class="col-md-12 col-centered">
+        <br>
+        <span class="my_title"> Events :</span>
+        <br>
         <div class="table-responsive">
 
-                
-              <table id="mytable" class="table table-bordred table-striped">
+                <b>
+              <table id="mytable" class="table table-bordred table-striped" style="background-color:white;">
                    
-                   <thead>
+                   <thead style="font-size:18px;color:#0000ff;">
                    <th>Event Title</th>
                    <th>Movie</th>
                     <th>Start Date</th>
@@ -20,7 +22,7 @@
                    </thead>
     <tbody>
     
-    <tr ng-repeat="event in events">
+    <tr dir-paginate="event in events | itemsPerPage: pageSize" current-page="currentPage">
     <td> {{ event.title }} </td>
         <td> {{ event.movie_title }} </td>
             <td> {{ event.start | date : "medium" }}  </td>
@@ -34,20 +36,26 @@
     </tbody>
         
 </table>
+</b>
+</div>
+<span class="pull-right">
+                        <label style="color:white;">Movies per page:</label>
+                        <input type="number" min="1" max="100" class="pagenumber" ng-model="pageSize">
+                </span>
+</div>
 
-<div class="clearfix"></div>
-<ul class="pagination pull-right">
-  <li class="disabled"><a href="#"><span class="glyphicon glyphicon-chevron-left"></span></a></li>
-  <li class="active"><a href="#">1</a></li>
-  <li><a href="#">2</a></li>
-  <li><a href="#">3</a></li>
-  <li><a href="#">4</a></li>
-  <li><a href="#">5</a></li>
-  <li><a href="#"><span class="glyphicon glyphicon-chevron-right"></span></a></li>
-</ul>
-                
-            </div>
+        <!-- Pagination -->
+<div class ="row"> <!-- div row 2-->
+    <div class="text-center">
+      <dir-pagination-controls boundary-links="true" on-page-change="pageChangeHandler(newPageNumber)"></dir-pagination-controls>
+  </div>
+
+
+</div> <!-- div row 2-->
+
+    
             
-        </div>
+            
+        
 	</div>
 </div>

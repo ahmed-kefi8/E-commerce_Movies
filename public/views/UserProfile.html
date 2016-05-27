@@ -1,0 +1,140 @@
+    <div class ="container" ng-controller="UserProfileController">
+  <div class ="row ">
+  </br></br>
+        <div class="col-md-10 col-sm-12 col-centered" >
+   
+   
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title"><b> {{loggeduser.username}}<span class="pull-right">{{date | date:'yyyy-MM-dd HH:mm:ss'}}</span> </b></h3>
+            </div>
+            <div class="panel-body">
+              <div class=" col-md-6 col-lg-6 center-block"> 
+                
+
+
+
+</br></br></br>
+
+                            <!-- drop box -->
+            <div ng-show="!uploadPhoto && !loggeduser.photo && !loading"
+                 class="drop-box center-block" ngf-drag-over-class="drop-box-dragover"
+                 ngf-change="readFileImg($files)" ngf-drop ngf-select ng-model="files"
+                 ngf-multiple="false" ngf-allow-dir="false" accept="image/*" ng-cloak>
+              <span></br></br></br>Drop image or click to upload profile photo</span>
+            </div>
+
+
+            <!-- current user photo -->
+            <div class="photo-shadow center-block" ng-show="loggeduser.photo" ng-cloak>
+              <img class="photo-img center-block img-thumbnail" ng-src="{{loggeduser.photo}}">
+            </div>
+
+
+            <!--progress-->
+            <div class="drop-box-container" ng-show="loading" ng-cloak>
+              <div class="wrap">
+<div class="spinners">
+  <div class="row">
+    <div class="spinner2 spinner-bounce-middle"></div>
+  </div>
+</div>
+              </div>
+            </div>
+
+
+          <!--Img Crop-->
+          <img-crop  ng-show="uploadPhoto && !loading && !loggeduser.photo" image="uploadPhoto" result-image="croppedPhoto"
+                     area-type="square" ngf-accept="'image/*'"
+                     result-image-size="250"
+                     class="drop-box-container img-rounded" ng-cloak> </img-crop>
+
+</br>
+          <!--Save-->
+          <button ng-show="uploadPhoto && !loading && !loggeduser.photo" ng-disabled="loading"
+                     ng-click="upload()"
+                     class="btn btn-warning center-block" ng-cloak>Save Photo</button>
+
+
+          <!--Reset-->
+          <button ng-show="loggeduser.photo" ngf-select ngf-change="readFileImg($files)" ng-disabled="loading"
+                     ngf-multiple="false" ngf-allow-dir="false" accept="image/*"
+                     class="btn btn-success center-block" ng-cloak>Change Photo</button>
+
+
+
+
+
+
+
+
+
+                
+                  </div>
+
+
+                <div class=" col-md-6 col-lg-6 "> 
+                </br></br>
+                  <table class="table table-user-information" style="line-height: 0;">
+                    <tbody>
+                      <tr>
+                      <br>
+                        <td>Username:</td>
+                        <td valign="bottom"><a href="#" editable-text="loggeduser.username">{{ loggeduser.username || 'empty' }}</a></td>
+                      </tr>
+                      <tr>
+                        <td>First Name:</td>
+                        <td><a href="#" editable-text="loggeduser.firstName">{{ loggeduser.firstName || 'empty' }}</a></td>
+                      </tr>
+                      <tr>
+                        <td>Last Name:</td>
+                        <td><a href="#" editable-text="loggeduser.lastName">{{ loggeduser.lastName || 'empty' }}</a></td>
+                      </tr>
+
+                      <tr>
+                        <td>Email :</td>
+                        <td><a href="#" editable-text="loggeduser.email">{{ loggeduser.email || 'empty' }}</a></td>
+                      </tr>
+
+                      <tr>
+                        <td>Gender :</td>
+                        <td><a href="#" editable-radiolist="loggeduser.gender" e-ng-options="g.value as g.text for g in genders">{{ loggeduser.gender || 'empty' }}</a></td>
+                      </tr>
+
+                      <tr>
+                        <td>Date of Birth :</td>
+                        <td> <input type="date" ng-model="loggeduser.birth_date"></td>
+                      </tr>
+
+                      <tr>
+                        <td>Home Address :</td>
+                        <td><a href="#" editable-text="loggeduser.address">{{ loggeduser.address || 'empty' }}</a></td>
+                      </tr>
+
+                      <tr>
+                        <td>Phone Number :</td>
+                        <td><a href="#" editable-text="loggeduser.phone_number">{{ loggeduser.phone_number || 'empty' }}</a></td>
+
+                      </tr>
+                     
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+          <div class="panel-footer clearfix">
+        <div class="pull-right">
+            <a ng-click="saveChanges()" class="btn btn-primary">Save Changes</a>
+            <a href="#Home" class="btn btn-default">Go Back</a>
+        </div>
+    </div>
+
+
+            </div>
+
+          </div>
+
+
+        </div>
+      </div>
+    </div>

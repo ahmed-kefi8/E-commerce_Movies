@@ -1,7 +1,7 @@
 <div class="container" ng-controller="CartController">
     <div class="row">
  
-        <div class="col-sm-12 col-md-10 col-md-offset-1">
+        <div class="col-sm-12 col-md-12">
             <div ng-if="cart.length != 0">
                 <table class="table table-hover">
                     <thead>
@@ -19,8 +19,8 @@
                         <tr ng-repeat="movie in cart">
 
                             <td class="col-sm-8 col-md-6">
-                                <div class="media">
-                                    <span class="pull-left"> <img class="media-object" src="{{movie.Poster}}" style="width: 100px; height: 100px;"> </span>
+                                <div class="media ">
+                                    <div class="pull-left"> <img class="media-object" src="{{movie.Poster}}" width="100" height="100"> </div>
                                     <div class="media-body">
                                         <h4 class="media-heading"><a href="#">{{movie.Title}}</a></h4>
                                         <h5 class="media-heading"> Actors : {{movie.Actors}} </h5>
@@ -33,7 +33,7 @@
                                 <!--    <input type="text" class="form-control" id="qte" ng-model="movie.quantityInCart"> -->
 
 
-<div class="input-group spinner">
+<div class="input-group spn">
     <input type="text" class="form-control" value="{{movie.quantityInCart}}"> 
     <div class="input-group-btn-vertical">
       <button class="btn btn-success" type="button" ng-click="addQuantity(movie._id)"><i class="fa fa-caret-up"></i></button>
@@ -74,31 +74,30 @@
                             <td><h3>Total</h3></td>
                             <td class="text-right"><h3><strong>{{ Total() + 6.94 | currency}}</strong></h3></td>
                         </tr>
-                        <tr>
-                            <td>   </td>
-                            <td>   </td>
-                            <td>
 
-                                <button type="button" class="btn btn-danger" ng-click="emptyCart()">
+                    </tbody>
+                </table>
+
+                                <button type="button" class="btn btn-success pull-right" ng-click="order()">
+                                    <span class="glyphicon glyphicon-play"></span> Order Now
+                                </button>
+
+                                <button type="button" class="btn btn-info pull-right" ng-click="saveCart()">
+                                    <span class="glyphicon glyphicon-save"></span> Save your Cart
+                                </button>  
+<br><br><br>
+                                <button type="button" class="btn btn-danger pull-right" ng-click="emptyCart()">
                                     <span class="glyphicon glyphicon-trash"></span> Empty your Cart
                                 </button>
 
-                            </td>
-                            <td>
-                                <a href="#Movies" class="btn btn-default">
+                                <a href="#Movies" class="btn btn-default pull-right">
                                     <span class="glyphicon glyphicon-shopping-cart"></span> Continue Shopping
                                 </a>
 
-                            </td>
 
-                            <td>
-                                <button type="button" class="btn btn-success" ng-click="order()">
-                                    <span class="glyphicon glyphicon-play"></span> Order Now
-                                </button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+
+
+
             </div> <!-- full cart -->
 
             <div ng-if="cart.length == 0" class ="text-center">

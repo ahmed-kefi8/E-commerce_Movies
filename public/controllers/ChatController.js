@@ -10,13 +10,14 @@ Movie_Store_App.controller('chatController', ['$scope', 'Socket','$rootScope', f
 
 
 
-Socket.emit('add-user', {username: $rootScope.loggeduser.username})
+Socket.emit('add-user', {username: $rootScope.loggeduser.username, photo: $rootScope.loggeduser.photo });
 
 
 $scope.sendMessage = function(msg){
 	if(msg != null && msg != '')
-		$scope.date = new Date();
-		Socket.emit('message', {message: msg})
+ var d = new Date();
+
+		Socket.emit('message', {username: $rootScope.loggeduser.username, message: msg, photo: $rootScope.loggeduser.photo, date : d})
 	$scope.msg = '';
 }
 
@@ -29,26 +30,49 @@ Socket.on('users', function(data){
 });
 
 
-Socket.on('users', function(data){
-	$scope.users = data.users;
-});
-
-
 Socket.on('message', function(data){
 	$scope.messages.push(data);
 });
 
 
 Socket.on('add-user', function(data){
-	$scope.users.push(data.username);
-	$scope.messages.push({username: data.username, message: 'has entered the chat room'});
+	var exist = false;
+	for(var i = 0; i <$scope.users.length; i++) {
+        if ($scope.users[i].username == data.username)
+        	{exist = true;
+        		break;}
+    }
+
+    if(exist == false)
+	{$scope.users.push({username :data.username, photo : data.photo});}
+
+	 var d = new Date();
+	$scope.messages.push({username: data.username, message: 'has entered the chat room', photo: data.photo, date : d});
 });
+
+
+
+
+
+
 
 
 Socket.on('remove-user', function(data){
-	$scope.users.splice($scope.users.indexOf(data.username), 1);
-	$scope.messages.push({username: data.username, message: 'has left the chat room'});
+	 Socket.emit('request-users', {});
+
+    for(var i = 0; i <$scope.users.length; i++) {
+        if ($scope.users[i].username == data.username)
+          {var ph = $scope.users[i].photo; }
+    }
+	 	var d = new Date();
+	$scope.messages.push({username: data.username, message: 'has left the chat room', photo: ph, date : d});
+
 });
+
+
+
+
+
 
 
 $scope.$on('$locationChangeStart', function(event){

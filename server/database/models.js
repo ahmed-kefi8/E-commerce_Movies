@@ -25,19 +25,33 @@ Imdbvotes : String,
 Imdbid : String,
 Type : String,
 Response : String,
-InStock : String
+InStock : String,
+Preview_link : String
 	});
 
 
 var UserSchema = mongoose.Schema(
 	{
-email : String,
 username : String,
 firstName : String,
 lastName : String,
 password : String,
+photo	: String,
+email : String,
+gender : String,
+birth_date : Date,
+address : String,
+phone_number : String,
 cart : [],
-reserved_Events: []
+reserved_Events: [],
+fb_id: String,
+fb_token: String,
+role: String
+     //   displayName: String,
+    //    email: String,
+     //   profileUrl: String,
+       
+    
 	});
 
 UserSchema.set('versionKey', false);
@@ -52,7 +66,8 @@ movie_title : String,
 movie_id : String,
 state : String,
 duration : String,
-url : String
+url : String,
+userId : String
 	});
 
 

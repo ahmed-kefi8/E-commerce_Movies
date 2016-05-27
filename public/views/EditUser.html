@@ -2,41 +2,52 @@
 	<div class="row">
 		
         
-        <div class="col-md-12">
+         <div class="col-md-10 col-centered">
+        <br>
+        <span class="Premi_Res"> Edit {{user.username}} Account : <img class="img-rounded" src="{{ user.photo }}" height="50" width="50"> </td></span>
+        <br><br>
         <div class="table-responsive">
-              <table id="mytable" class="table table-bordred table-striped">
+
+<b>
+              <table id="mytable" class="table table-bordred">
                    
     <tbody>
     
 
     <tr>
-    <td> Username </td>
-    <td> <input type="text" ng-model="user.username" size="50"> </td>
+    <td style="vertical-align:middle;"> Username :</td>
+    <td> <input type="text" ng-model="user.username" size="50"  class="myInputText"> </td>
     </tr>
 
 
     <tr>
-    <td> FirstName </td>
-    <td> <input type="text" ng-model="user.firstName" size="50"> </td>
+    <td style="vertical-align:middle;"> FirstName :</td>
+    <td> <input type="text" ng-model="user.firstName" size="50"  class="myInputText"> </td>
     </tr>
 
     <tr>
-    <td> LastName </td>
-    <td> <input type="text" ng-model="user.lastName" size="50"> </td>
+    <td style="vertical-align:middle;"> LastName :</td>
+    <td> <input type="text" ng-model="user.lastName" size="50"  class="myInputText"> </td>
     </tr>
 
     <tr>
-    <td> Email </td>
-    <td> <input type="text" ng-model="user.email" size="50"> </td>
+    <td style="vertical-align:middle;"> Email :</td>
+    <td> <input type="text" ng-model="user.email" size="50"  class="myInputText"> </td>
     </tr>
 
     <tr>
-    <td> Password </td>
-    <td> <input type="text" ng-model="user.password" size="50"> </td>
+    <td style="vertical-align:middle;"> Address :</td>
+    <td> <input type="text" ng-model="user.address" size="50"  class="myInputText"> </td>
     </tr>
+
+    <tr>
+    <td style="vertical-align:middle;"> Phone number :</td>
+    <td> <input type="text" ng-model="user.phone_number" size="50"  class="myInputText"> </td>
+    </tr>
+
 
 </table>
-
+</tbody>
 <button type="submit" class="btn btn-success" ng-click="updateUser()">Save</button>
 
 </div>

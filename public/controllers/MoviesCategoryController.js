@@ -7,6 +7,44 @@ Movie_Store_App.controller('MoviesCategoryController',['$scope','$http','$filter
 
 $scope.currentPage = 1;
 $scope.pageSize = 8;
+$scope.orderBy ="Price";
+
+
+
+
+
+
+$scope.yearLimits = function(movie){
+	if (($scope.minYear == undefined || $scope.minYear == ""  ) && ($scope.maxYear == undefined || $scope.maxYear == "" ))
+		return movie;
+	else if ($scope.minYear != undefined && ($scope.maxYear == undefined || $scope.maxYear == ""))
+		return parseInt(movie.Year) >= parseInt($scope.minYear);
+	else if (($scope.minYear == undefined  || $scope.minYear == "" )&& $scope.maxYear != undefined)
+		return parseInt(movie.Year) <= parseInt($scope.maxYear);
+	else
+     	return parseInt(movie.Year) >= parseInt($scope.minYear) && parseInt(movie.Year) <= parseInt($scope.maxYear);
+}
+
+
+$scope.minImdbRating = function(movie){
+	if ($scope.minImdb == undefined || $scope.minImdb == ""  )
+		return movie;
+	else
+		return parseFloat(movie.imdbRating) >= parseFloat($scope.minImdb);
+
+}
+
+
+$scope.priceLimits = function(movie){
+	if (($scope.minPrice == undefined || $scope.minPrice == ""  ) && ($scope.maxPrice == undefined || $scope.maxPrice == "" ))
+		return movie;
+	else if ($scope.minPrice != undefined && ($scope.maxPrice == undefined || $scope.maxPrice == ""))
+		return parseFloat(movie.Price) >= parseFloat($scope.minPrice);
+	else if (($scope.minPrice == undefined  || $scope.minPrice == "" )&& $scope.maxPrice != undefined)
+		return parseFloat(movie.Price) <= parseFloat($scope.maxPrice);
+	else
+     	return parseFloat(movie.Price) >= parseFloat($scope.minPrice) && parseFloat(movie.Price) <= parseFloat($scope.maxPrice);
+}
 
 
 

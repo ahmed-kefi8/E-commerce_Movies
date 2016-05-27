@@ -19,4 +19,10 @@ $scope.AddUser = function(user){
 
 };
 
+
+$scope.currentPage = 1;
+$scope.pageSize = 10;
+
+
+
 }]);

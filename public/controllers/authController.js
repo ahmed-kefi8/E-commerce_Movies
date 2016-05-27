@@ -1,7 +1,22 @@
-Movie_Store_App.controller('authController', ['$scope','$http','$location','$rootScope', function($scope,$http,$location,$rootScope) {
+Movie_Store_App.controller('authController', ['$scope','$http','$location','$rootScope','Upload','UserFactory', function($scope,$http,$location,$rootScope,Upload,UserFactory) {
 
     $scope.user  = {username:'',password:''};
     $scope.alert = '';
+
+    
+
+ 
+  $scope.strenth = 0;
+  
+ $scope.inputType = 'password';
+  $scope.hideShowPassword = function(){
+    if ($scope.inputType == 'password')
+      $scope.inputType = 'text';
+    else
+      $scope.inputType = 'password';
+  };
+  
+
 
     $scope.login = function(user){
                         console.log("login   "+ user.password);
@@ -18,20 +33,22 @@ Movie_Store_App.controller('authController', ['$scope','$http','$location','$roo
     };
 
     $scope.signup = function(user){
-        $scope.errors = {};
+        
+        user.strenth = $scope.strenth;
 
         $http.post('/auth/signup', user).
             success(function(data) {
                 if(data.alert)
                 {$scope.alert = data.alert;}
                 else
-                {$scope.errors = data;
-                console.log(data);}
+                {$scope.errors = data;}
+
              }).
             error(function() {
                 console.log("http failed");
                 $scope.alert = 'Registration failed'
             });
+
 
     };
 

@@ -3,9 +3,53 @@ Movie_Store_App.controller('MoviesController',['$scope', '$http','MovieFactory',
   
   
 $scope.movies = MovieFactory.query();
+$scope.orderBy ="Price";
+
 
 $scope.genres=["Action","Adventure","Animation","Biography","Comedy","Crime","Drama","Family","Fantasy","History","Horror","Music",
 				"Musical","Mystery","Romance","Sci-Fi","Sport","Thriller","War","Western"];
+
+
+
+
+
+
+$scope.yearLimits = function(movie){
+	if (($scope.minYear == undefined || $scope.minYear == ""  ) && ($scope.maxYear == undefined || $scope.maxYear == "" ))
+		return movie;
+	else if ($scope.minYear != undefined && ($scope.maxYear == undefined || $scope.maxYear == ""))
+		return parseInt(movie.Year) >= parseInt($scope.minYear);
+	else if (($scope.minYear == undefined  || $scope.minYear == "" )&& $scope.maxYear != undefined)
+		return parseInt(movie.Year) <= parseInt($scope.maxYear);
+	else
+     	return parseInt(movie.Year) >= parseInt($scope.minYear) && parseInt(movie.Year) <= parseInt($scope.maxYear);
+}
+
+
+$scope.minImdbRating = function(movie){
+	if ($scope.minImdb == undefined || $scope.minImdb == ""  )
+		return movie;
+	else
+		return parseFloat(movie.imdbRating) >= parseFloat($scope.minImdb);
+
+}
+
+
+$scope.priceLimits = function(movie){
+	if (($scope.minPrice == undefined || $scope.minPrice == ""  ) && ($scope.maxPrice == undefined || $scope.maxPrice == "" ))
+		return movie;
+	else if ($scope.minPrice != undefined && ($scope.maxPrice == undefined || $scope.maxPrice == ""))
+		return parseFloat(movie.Price) >= parseFloat($scope.minPrice);
+	else if (($scope.minPrice == undefined  || $scope.minPrice == "" )&& $scope.maxPrice != undefined)
+		return parseFloat(movie.Price) <= parseFloat($scope.maxPrice);
+	else
+     	return parseFloat(movie.Price) >= parseFloat($scope.minPrice) && parseFloat(movie.Price) <= parseFloat($scope.maxPrice);
+}
+
+
+
+
+
 
 
 
@@ -15,6 +59,9 @@ $scope.pageSize = 8;
 
 
 $scope.addToCart = function(movie){
+
+	if(!$rootScope.loggeduser)
+		alert("You have to login to access your Cart");
 
 var bool = false;
 
@@ -31,16 +78,13 @@ var bool = false;
 		{
 		$rootScope.loggeduser.cart.push({movie_id : movie._id , quantity : 1});
 
-		UserFactory.update($rootScope.loggeduser);
+		//UserFactory.update($rootScope.loggeduser);
 
 		$location.path('/Cart/'+$rootScope.loggeduser._id);
 
 		}
 
 	}
-
-
-
 
 
 

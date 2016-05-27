@@ -16,10 +16,11 @@ var PORT = process.env.PORT || 3000;
 app.use(cors());
 
 // parse application/json
-app.use(bodyParser.json());
-
+//app.use(bodyParser.json());
+app.use(bodyParser.json({limit: '50mb'}));
+app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 // parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: true })); 
+//app.use(bodyParser.urlencoded({ extended: true })); 
 
 // override with the X-HTTP-Method-Override header in the request.
 app.use(methodOverride('X-HTTP-Method-Override')); 
@@ -30,34 +31,46 @@ app.use(express.static(__dirname + "/public"));
 var users = [];
 io.on('connection', function(socket) {
   var username = '';
-  console.log("A User has Connected!");
+
+
   
   socket.on('request-users', function(){
     socket.emit('users', {users: users});
   });
   
   socket.on('message', function(data){
-    io.emit('message', {username: username, message: data.message});
+    io.emit('message', {username: data.username, message: data.message, photo: data.photo, date: data.date});
   })
-  
   
   socket.on('add-user', function(data){
 
       io.emit('add-user', {
-        username: data.username
+        username: data.username,
+        photo : data.photo
       });
       username = data.username;
-      users.push(data.username);
+      console.log(username+" has Connected!");
+      users.push({username : data.username, photo : data.photo});
     
   })
 
 
 
-
-
   socket.on('disconnect', function(){
-    console.log(username + ' has disconnected!');
-    users.splice(users.indexOf(username), 1);
+    
+    console.log("disconnect username: "+ username);
+    console.log("inside disconnect : users.length before splice :  " + users.length);
+var indice = -1;
+    for(var i = 0; i <users.length; i++) {
+      console.log("users[i].username: "+ users[i].username);
+        if (users[i].username == username)
+          {indice = i;}
+    }
+
+    users.splice(indice, 1);
+        console.log("inside disconnect : users.length after splice :  " + users.length);
+        console.log("disconnected: "+username);
+    console.log("remove-user emitted  "+ username);
     io.emit('remove-user', {username: username});
   })
 });

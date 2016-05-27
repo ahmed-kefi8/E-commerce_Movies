@@ -9,6 +9,9 @@ module.exports = function(app) {
     var session = require('express-session');
     var MongoStore = require('connect-mongo')(session);
     var bcrypt = require('bcryptjs');
+    var FacebookStrategy = require('passport-facebook').Strategy;
+
+    var configAuth = require('./config');
 
 
     app.use(session({
@@ -47,6 +50,56 @@ module.exports = function(app) {
         ));
 
 
+    passport.use(new FacebookStrategy({
+        clientID: configAuth.facebookAuth.clientID,
+        clientSecret: configAuth.facebookAuth.clientSecret,
+        callbackURL: configAuth.facebookAuth.callbackURL,
+        profileFields: ['id', 'displayName', 'photos','email', 'gender','birthday']
+      },
+      function(accessToken, refreshToken, profile, done) {
+        console.log(profile);
+            process.nextTick(function(){
+                User.findOne({'fb_id': profile.id}, function(err, user){
+                    if(err)
+                        return done(err);
+                    if(user)
+                        return done(null, user);
+                    else {
+                        var newUser = new User();
+                        newUser.fb_id = profile.id;
+                        newUser.fb_token = accessToken;
+                        newUser.username = profile.displayName;
+                        newUser.firstName = profile.displayName.split(" ")[0];
+                        newUser.lastName = profile.displayName.split(" ")[1];
+                        newUser.gender = profile.gender;
+                       // newUser.email = profile.emails[0].value;
+                        newUser.photo = profile.photos[0].value;
+
+                        newUser.save(function(err){
+                            if(err)
+                                throw err;
+                            return done(null, newUser);
+                        })
+                        console.log(profile);
+                    }
+                });
+            });
+        }
+
+    ));
+
+app.get('/auth/facebook',
+passport.authenticate('facebook', { scope: 'email'}),
+    function(req, res){
+});
+
+    app.get('/auth/facebook/callback', 
+      passport.authenticate('facebook', { successRedirect: '/#/Home',
+                                          failureRedirect: '/' }));
+
+
+
+
     passport.serializeUser(function(user, done) {
         done(null, user.id);
     });
@@ -74,10 +127,16 @@ module.exports = function(app) {
 
     app.post('/auth/signup',function(req,res){
 
+        
+
         req.checkBody('username', 'Username is required').notEmpty();
         req.checkBody('firstName', 'First Name is required').notEmpty();
         req.checkBody('lastName', 'Last Name is required').notEmpty();
+
+        if(req.body.email == "" || req.body.email == undefined)
         req.checkBody('email', 'Email is required').notEmpty();
+
+        if(req.body.email != "" && req.body.email != undefined)
         req.checkBody('email', 'Email is not valid').isEmail();
         req.checkBody('password', 'Password is required').notEmpty();
         req.checkBody('password2', 'Passwords do not match').equals(req.body.password);
@@ -85,7 +144,7 @@ module.exports = function(app) {
 
         var errors = req.validationErrors();
 
-        var err = {};
+        var errs = {};
         for(var i = 0; i < errors.length; i++) {
             var e = errors[i];
 
@@ -94,13 +153,33 @@ module.exports = function(app) {
                 if(key == 'param') param = e[key];
                 if(key == 'msg') msg = e[key];
             }
-            err[param] = msg;
+            errs[param] = msg;
         }
 
+        if(req.body.strenth > 0 && req.body.strenth < 50 && req.body.password !="" )
+            {errs.weakPass ="Your password is too weak please change it";}
 
 
-        if (errors) {
-            res.send(err);
+        User.findOne({username: req.body.username}, function (err, user) {
+            User.findOne({email: req.body.email}, function (err, user2) {
+
+
+                if (user && req.body.username != undefined && req.body.username != "") {
+                    errs.usernameNotUnique = "username already exists!";
+                }
+
+                if (user2 && req.body.email != undefined && req.body.email != "") {
+                    errs.emailNotUnique = "email already exists!";
+                }
+
+                
+
+
+
+
+
+        if (Object.getOwnPropertyNames(errs).length != 0) {
+            res.send(errs);
             return;
         }
 
@@ -118,6 +197,11 @@ module.exports = function(app) {
 
           u.password = hash ;
 
+          if (req.body.email == "admin@craftacademy.eu")
+            {u.role = 'admin';}
+          else
+            {u.role = 'registered_user';}
+
           u.save(function(err){
             if (err) {
                 res.json({'alert':'Registration error'});
@@ -126,6 +210,10 @@ module.exports = function(app) {
             }
         });
       }
+
+      });
+         });
+
   });
 
 

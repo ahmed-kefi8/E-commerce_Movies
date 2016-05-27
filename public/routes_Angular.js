@@ -9,6 +9,14 @@
             })
 
             .when('/Chat', {
+                resolve: {
+                    "check": function($location, $rootScope){
+                        if(!$rootScope.loggeduser){
+                            $location.path('/signin');
+                            alert("You have to login to access the chat room");
+                        }
+                    }
+                },
                 templateUrl : 'views/Chat.html',
             })
 
@@ -21,13 +29,15 @@
             })
 
             .when('/signin', {
-                templateUrl: 'views/signin.html',
-                controller: 'authController'
+                templateUrl: 'views/signin.html'
+            })
+
+            .when('/MyProfile', {
+                templateUrl: 'views/UserProfile.html',
             })
 
             .when('/signup', {
-                templateUrl: 'views/signup.html',
-                controller: 'authController'
+                templateUrl: 'views/signup.html'
             })
 
             .when('/ManageMovies', {
@@ -72,7 +82,14 @@
 
 
             .when('/Cart', {
-
+                resolve: {
+                    "check": function($location, $rootScope){
+                        if(!$rootScope.loggeduser){
+                            $location.path('/signin');
+                            alert("You have to login to access your Cart");
+                        }
+                    }
+                },
                 templateUrl : 'views/Cart.html',
             })
 
@@ -80,7 +97,7 @@
                 resolve: {
                     "check": function($location, $rootScope){
                         if(!$rootScope.loggeduser){
-                            $location.path('/Login');
+                            $location.path('/signin');
                             alert("You have to login to access your Cart");
                         }
                     }

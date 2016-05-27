@@ -2,75 +2,85 @@
 	<div class="row">
 		
         
-        <div class="col-md-12">
+        <div class="col-md-10 col-centered">
+        <br>
+        <span class="Premi_Res"> Add New Movie :</span>
+        <br><br>
         <div class="table-responsive">
-              <table id="mytable" class="table table-bordred table-striped">
+
+<b>
+              <table id="mytable" class="table table-bordred">
                    
     <tbody>
     
     <tr>
-    <td> Title </td>
-    <td> <input type="text" ng-model="movie.Title" size="80"> </td>
+    <td style="vertical-align:middle;"> Title :</td>
+    <td > <input type="text" ng-model="movie.Title" size="80" class="myInputText"> </td>
     </tr>
 
     <tr>
-    <td> Runtime </td>
-    <td> <input type="text" ng-model="movie.Runtime" size="80"> </td>
+    <td style="vertical-align:middle;"> Runtime :</td>
+    <td> <input type="text" ng-model="movie.Runtime" size="80" class="myInputText"> </td>
     </tr>
 
     <tr>
-    <td> Year </td>
-    <td> <input type="text" ng-model="movie.Year" size="80"> </td>
+    <td style="vertical-align:middle;"> Year :</td>
+    <td> <input type="text" ng-model="movie.Year" size="80" class="myInputText"> </td>
     </tr>
 
     <tr>
-    <td> Released </td>
-    <td> <input type="text" ng-model="movie.Released" size="80"> </td>
+    <td style="vertical-align:middle;"> Released :</td>
+    <td> <input type="text" ng-model="movie.Released" size="80" class="myInputText"> </td>
     </tr>
 
     <tr>
-    <td> imdbRating </td>
-    <td> <input type="text" ng-model="movie.imdbRating" size="80"> </td>
+    <td style="vertical-align:middle;"> imdbRating :</td>
+    <td> <input type="text" ng-model="movie.imdbRating" size="80" class="myInputText"> </td>
     </tr>
 
     <tr>
-    <td> Genre </td>
-    <td> <input type="text" ng-model="movie.Genre" size="80"> </td>
+    <td style="vertical-align:middle;"> Genre :</td>
+    <td> <input type="text" ng-model="movie.Genre" size="80" class="myInputText"> </td>
     </tr>
 
     <tr>
-    <td> Director </td>
-    <td> <input type="text" ng-model="movie.Director" size="80"> </td>
+    <td style="vertical-align:middle;"> Director :</td>
+    <td> <input type="text" ng-model="movie.Director" size="80" class="myInputText"> </td>
     </tr>
 
     <tr>
-    <td> Actors </td>
-    <td> <input type="text" ng-model="movie.Actors" size="80"> </td>
+    <td style="vertical-align:middle;"> Actors :</td>
+    <td> <input type="text" ng-model="movie.Actors" size="80" class="myInputText"> </td>
     </tr>
 
     <tr>
-    <td> Plot </td>
-    <td> <textarea rows="4" cols="82" ng-model="movie.Plot"> </textarea> </td>
+    <td style="vertical-align:middle;"> Plot :</td>
+    <td> <textarea rows="4" cols="84" ng-model="movie.Plot" class="myInputText2"> </textarea> </td>
     </tr>
 
     <tr>
-    <td> Poster </td>
-    <td> <input type="text" ng-model="movie.Poster" size="110"> </td>
+    <td style="vertical-align:middle;"> Poster :</td>
+    <td> <textarea rows="3" cols="84" ng-model="movie.Poster" class="myInputText2"> </textarea> </td>
     </tr>
 
     <tr>
-    <td> Price </td>
-    <td> <input type="text" ng-model="movie.Price" size="80"> </td>
+    <td style="vertical-align:middle;"> Price :</td>
+    <td> <input type="text" ng-model="movie.Price" size="80" class="myInputText"> </td>
     </tr>
 
     <tr>
-    <td> In Stock </td>
-    <td> <input type="text" ng-model="movie.InStock" size="80"> </td>
+    <td style="vertical-align:middle;"> In Stock :</td>
+    <td> <input type="text" ng-model="movie.InStock" size="80" class="myInputText"> </td>
+    </tr>
+
+    <tr>
+    <td style="vertical-align:middle;"> Preview URL :</td>
+    <td> <input type="text" ng-model="movie.Preview_link" size="80" class="myInputText"> </td>
     </tr>
 
 
     </tbody>
         
 </table>
-
-<a class="btn btn-success " ng-click="AddMovie(movie)"> Add Movie </a>
+</b>
+<a class="btn btn-success btn-lg" ng-click="AddMovie(movie)"> Add Movie </a> 

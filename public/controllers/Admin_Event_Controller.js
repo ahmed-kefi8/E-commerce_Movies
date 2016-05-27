@@ -24,9 +24,17 @@ Movie_Store_App.controller('AdminEventsController',['$scope','EventFactory','$lo
 
 
 $scope.updateEvent = function(){
+
+$scope.ev.duration = moment($scope.ev.end).diff(moment($scope.ev.start), 'hours');
 EventFactory.update($scope.ev);
 alert("changement saved");
+
                                 }
+
+
+
+$scope.currentPage = 1;
+$scope.pageSize = 10;
 
 
 

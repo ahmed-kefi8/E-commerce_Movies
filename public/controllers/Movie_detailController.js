@@ -12,6 +12,8 @@ $scope.movie = MovieFactory.get({ id: $routeParams._id }); //Get a single movie
 
 
 
+
+
 $scope.quantity = 1;
 
 $scope.addQuantity = function(){
@@ -49,7 +51,7 @@ var bool = false;
 		{
 		$rootScope.loggeduser.cart.push({movie_id : movie._id , quantity : $scope.quantity});
 
-		UserFactory.update($rootScope.loggeduser);
+		//UserFactory.update($rootScope.loggeduser);
 
 		$location.path('/Cart/'+$rootScope.loggeduser._id);
 
@@ -86,14 +88,21 @@ for (var i = 0; i < m.length; i++) {
 $scope.BookEvent = function(event){
 
 event.state ="Booked By " + $rootScope.loggeduser.username;
+event.userId = $rootScope.loggeduser._id;
 EventFactory.update(event);
 
 
 };
 
 
+$scope.CancelEvent = function(event){
+
+event.state ="free";
+event.userId = "";
+EventFactory.update(event);
 
 
+};
 
 
 

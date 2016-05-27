@@ -1,14 +1,12 @@
-
 <div class="container" ng-controller="chatController" style="font-family:Verdana">
     <div class="row">
-        <h3 class="text-center" > Movie Store CHAT ROOM </h3>
-        <br />
-        <div class="col-md-8">
+        <h3 class="text-center" style="color:white; font-weight: bold;" > Movie Store CHAT ROOM </h3>
+        <div class="col-md-8" height="300">
             <div class="panel panel-primary">
                 <div class="panel-heading">
                     CHAT
                 </div>
-                <div class="panel-body chat-window" >
+                <div class="panel-body chat-window" style="overflow: auto" scroll-glue>
                     <ul class="media-list">
 
                         <li class="media" ng-repeat="message in messages">
@@ -16,14 +14,13 @@
                             <div class="media-body">
 
                                 <div class="media">
-                                    <a class="pull-left" href="#">
-                                        <img class="media-object img-circle " src="" />
-                                    </a>
                                     <div class="media-body" >
-                                        <span class="username">{{message.username}} :</span>
+                    <img class="img-circle" src="{{message.photo}}" height="50" width="50">
+
+
                                         <span class="message">{{message.message}}</span>
                                         <br />
-                                        <small class="text-muted" class="username">{{message.username}} | {{date | date:'yyyy-MM-dd HH:mm:ss'}}
+                                        <small class="text-muted" class="username">{{message.username}} | {{ message.date | date:'yyyy-MM-dd HH:mm:ss'}}
                                             <hr /></small> 
                                         </div>
                                     </div>
@@ -48,7 +45,7 @@
 
                  ONLINE USERS
              </div>
-             <div class="panel-body chat-window">
+             <div class="panel-body chat-window" style="overflow: auto" scroll-glue>
                 <ul class="media-list">
 
                     <li class="media" ng-repeat="user in users">
@@ -57,12 +54,10 @@
 
                             <div class="media">
                                 <a class="pull-left" href="#">
-                                    <img class="media-object img-circle" style="max-height:40px;" src="" />
+                                    <img class="media-object img-circle" style="max-height:40px;" src="{{user.photo}}" />
                                 </a>
                                 <div class="media-body" >
-                                    <h5>{{user}} </h5>
-
-                                    <!--   <small class="text-muted"></small> -->
+                                    <h5>{{user.username}} </h5>
                                 </div>
                             </div>
 

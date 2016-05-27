@@ -33,7 +33,8 @@ $scope.addQuantity = function(movie_id){
 				if($rootScope.cart[i].InStock == $rootScope.cart[i].quantityInCart)
 					{alert("Sorry we Only have " +$rootScope.cart[i].InStock + " DVD of "+$rootScope.cart[i].Title + " available right now ");}
 				else
-				{$rootScope.cart[i].quantityInCart++;}
+				{$rootScope.cart[i].quantityInCart ++;
+				 $rootScope.loggeduser.cart[i].quantity = $rootScope.cart[i].quantityInCart;}
 			break;
 
 			}
@@ -48,6 +49,7 @@ for(var i=0 ; i < $rootScope.cart.length ; i++)
 	{
 		if ($rootScope.cart[i]._id == movie_id && $rootScope.cart[i].quantityInCart > 1)
 		{$rootScope.cart[i].quantityInCart--;
+		 $rootScope.loggeduser.cart[i].quantity = $rootScope.cart[i].quantityInCart;
 			break;}
 	}
 }
@@ -98,7 +100,7 @@ for(var i=0; i<$rootScope.loggeduser.cart.length ; i++)
 
 
 
-	UserFactory.update($rootScope.loggeduser);
+	//UserFactory.update($rootScope.loggeduser);
 
 
 }
@@ -111,7 +113,10 @@ $scope.emptyCart = function(){
 	UserFactory.update($rootScope.loggeduser);
 }
 
-
+$scope.saveCart = function(){
+UserFactory.update($rootScope.loggeduser);
+alert("Your Cart has been Saved !")
+}
 
 
 $scope.order = function(){

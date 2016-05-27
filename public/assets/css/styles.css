@@ -4,16 +4,97 @@
     padding: 15px; 
     margin-left: auto;
     margin-right: auto;
-    display: inline-block;
     text-align: center;
     vertical-align: middle;
+
+}
+
+.pansTitle{
+  font-size: 20px;
+  color: blue;
+  font-weight: bold;
+}
+.pagenumber{
+
+
+  width: 7em;
+  height: 34px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+  -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+       -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+          transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+
+.pagenumber2{
+
+
+  width: 7em;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+  -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+       -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+          transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+
+.myInputText{
+
+
+
+  height: 34px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+  -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+       -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+          transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 }
 
 
-.center{
-padding-right: 15px;
+
+.big-checkbox {width: 20px; height: 20px;}
+
+
+.center2{
+margin: auto;
 }
 
+.profilepic{
+  margin-right: 10px;
+}
+
+
+.backg_color{
+background-color: white;
+
+}
+.col-centered{
+    float: none;
+    margin: 0 auto;
+}
 
 .img-hover img {
     -webkit-transition: all .3s ease; /* Safari and Chrome */
@@ -21,7 +102,9 @@ padding-right: 15px;
     -o-transition: all .3s ease; /* IE 9 */
     -ms-transition: all .3s ease; /* Opera */
     transition: all .3s ease;
+
 }
+
 .img-hover img:hover {
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
@@ -31,6 +114,43 @@ padding-right: 15px;
     -o-transform:translatZ(0) scale(1.20); /* Opera */
     transform:translatZ(0) scale(1.20);
 }
+
+
+
+
+.img-hover2 img {
+    -webkit-transition:all 0.3s ease-out;
+  -moz-transition:all 0.3s ease-out;
+  -ms-transition:all 0.3s ease-out;
+  -o-transition:all 0.3s ease-out;
+  transition:all 0.3s ease-out;
+}
+
+.img-hover2 img:hover {
+    -webkit-transform:translate(0px, 200px) scale(1.8);
+  -moz-transform:translate(0px, 200px) scale(1.8);
+  -ms-transform:translate(0px, 200px) scale(1.8);
+  -o-transform:translate(0px, 200px) scale(1.8);
+  transform:translate(0px, 200px) scale(1.8);
+}
+
+
+.img-hover3 img {
+    -webkit-transition:all 0.3s ease-out;
+  -moz-transition:all 0.3s ease-out;
+  -ms-transition:all 0.3s ease-out;
+  -o-transition:all 0.3s ease-out;
+  transition:all 0.3s ease-out;
+}
+
+.img-hover3 img:hover {
+    -webkit-transform:scale(2);
+  -moz-transform:scale(2);
+  -ms-transform:scale(2);
+  -o-transform:scale(2);
+  transform:scale(2);
+}
+
 
 .grayscale {
   -webkit-filter: brightness(1.10) grayscale(100%) contrast(90%);
@@ -66,10 +186,14 @@ background-color: white;
 
 }
 
+.drop_box_text{
+padding-top: 120px;
+
+}
 .title{
   text-align: center;
   font-size: 30px;
-      color: green;
+      color: white;
     font-weight: bold;
 }
 .error{
@@ -90,6 +214,12 @@ color: red;
 .Premi_Res{
 font-size: 23px;
       color: green;
+    font-weight: bold;
+}
+
+.my_title{
+font-size: 30px;
+      color: #cc0099;
     font-weight: bold;
 }
 
@@ -114,16 +244,23 @@ overflow-y: scroll;
 }
 
 
+
+/* golden color
 .navbar-costum {
-    color: #3385ff;
-    background-color: #002db3;
+  color: #c5b358;
+    background-color: black;
     font-weight: bold;
     font-size: 16px;
 }
 
+.navbar-nav > li > a {
+color: inherit;
+color: #c5b358;
+}
+
 .dropdown-menu > li > a {
-color:          #3385ff;
-    background-color: #002db3;
+color: #c5b358;
+    background-color: black;
 font-weight: bold;
 }
 
@@ -131,6 +268,114 @@ ul.nav li.dropdown:hover > ul.dropdown-menu {
     display: block; 
     font-weight: bold;   
 }
+*/
+/* Effect 14: border switch */
+.cl-effect-14 a {
+  padding: 0 20px;
+  height: 45px;
+  line-height: 45px;
+}
+
+.cl-effect-14 a::before,
+.cl-effect-14 a::after {
+  position: absolute;
+  width: 45px;
+  height: 2px;
+  background: black;
+  content: '';
+  opacity: 0.2;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+  pointer-events: none;
+}
+
+.cl-effect-14 a::before {
+  top: 0;
+  left: 0;
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  transform: rotate(90deg);
+  -webkit-transform-origin: 0 0;
+  -moz-transform-origin: 0 0;
+  transform-origin: 0 0;
+}
+
+.cl-effect-14 a::after {
+  right: 0;
+  bottom: 0;
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  transform: rotate(90deg);
+  -webkit-transform-origin: 100% 0;
+  -moz-transform-origin: 100% 0;
+  transform-origin: 100% 0;
+}
+
+.cl-effect-14 a:hover::before,
+.cl-effect-14 a:hover::after,
+.cl-effect-14 a:focus::before,
+.cl-effect-14 a:focus::after {
+  opacity: 1;
+}
+
+.cl-effect-14 a:hover::before,
+.cl-effect-14 a:focus::before {
+  left: 50%;
+  -webkit-transform: rotate(0deg) translateX(-50%);
+  -moz-transform: rotate(0deg) translateX(-50%);
+  transform: rotate(0deg) translateX(-50%);
+}
+
+.cl-effect-14 a:hover::after,
+.cl-effect-14 a:focus::after {
+  right: 50%;
+  -webkit-transform: rotate(0deg) translateX(50%);
+  -moz-transform: rotate(0deg) translateX(50%);
+  transform: rotate(0deg) translateX(50%);
+}
+
+
+
+
+.navbar-costum {
+    background-color: transparent;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.navbar-nav > li > a {
+  font-family: "Courier New", Courier, monospace
+    font-size: 18px;
+color: inherit;
+color: #a48041;
+}
+
+.dropdown-menu > li > a {
+  font-family: "Courier New", Courier, monospace
+  font-size: 18px;
+color: #a48041;
+    background-color: transparent;
+font-weight: bold;
+}
+
+.navbar-nav > li > a:hover {
+background-color: transparent;
+}
+
+.dropdown-menu > li > a:hover {
+    background-color: transparent;
+}
+
+ul.nav li.dropdown:hover > ul.dropdown-menu {
+    display: block; 
+    font-weight: bold;   
+}
+
+ul.dropdown-menu a:hover{
+  color:white;
+}
+
 
 body,html {
  height: 100%;
@@ -157,7 +402,15 @@ text-decoration: underline;
 
 body{
 
-	background-color: #ccebff;
+	/* background-color: #ccebff; */
+
+  background: url("../img/Dark-grey-background.jpg") no-repeat center fixed; 
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover;
+
+
 }
 
 /* add to cart button*/ 
@@ -249,10 +502,12 @@ body{
 /*    --------------------------------------------------
     :: Footer
 	-------------------------------------------------- */
+
 #footer {
     color: #6d6d6d;
     font-size: 12px;
     text-align: center;
+
 }
 #footer p {
     margin-bottom: 0;
@@ -295,10 +550,10 @@ body{
 
 /* spinner Cart */
 
-.spinner {
+.spn {
   width: 75px;
 }
-.spinner input {
+.spn input {
   text-align: right;
 }
 .input-group-btn-vertical {
@@ -330,4 +585,153 @@ body{
   top: 0;
   left: 4px;
 }
+
+/*      SPINNER           */
+
+.spinners {
+  margin: 60px auto;
+  text-align: center;
+}
+.spinners .row {
+  height: 50px;
+  padding: 10px 0;
+}
+
+/* ============================ */
+/* VARIABLES                    */
+/* ============================ */
+/* ============================ */
+/* SPINNER GENERAL              */
+/* ============================ */
+.spinner, .spinner:before, .spinner:after {
+  width: 4px;
+  height: 20px;
+  background-color: #00B285;
+  border-radius: 2px;
+}
+
+.spinner2 {
+  display: inline-block;
+  position: relative;
+}
+.spinner:before, .spinner:after {
+  content: "";
+  position: absolute;
+  display: block;
+  top: 0px;
+}
+.spinner:before {
+  left: -6px;
+}
+.spinner:after {
+  left: 6px;
+}
+
+/* ============================ */
+/* SPINNER BOUNCE MIDDLE        */
+/* ============================ */
+@-webkit-keyframes bounce-middle {
+  0% {
+    height: 4px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+  }
+  50% {
+    height: 20px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+  100% {
+    height: 4px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+  }
+}
+@keyframes bounce-middle {
+  0% {
+    height: 4px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+  }
+  50% {
+    height: 20px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+  100% {
+    height: 4px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+  }
+}
+.spinner-bounce-middle {
+  -webkit-animation: bounce-middle 0.6s ease 0.1s infinite;
+          animation: bounce-middle 0.6s ease 0.1s infinite;
+}
+.spinner-bounce-middle:before, .spinner-bounce-middle:after {
+  top: 50%;
+  -webkit-transform: translateY(-10px) translateZ(0);
+          transform: translateY(-10px) translateZ(0);
+}
+.spinner-bounce-middle:before {
+  -webkit-animation: bounce-middle 0.6s ease 0s infinite;
+          animation: bounce-middle 0.6s ease 0s infinite;
+}
+.spinner-bounce-middle:after {
+  -webkit-animation: bounce-middle 0.6s ease 0.2s infinite;
+          animation: bounce-middle 0.6s ease 0.2s infinite;
+}
+
+
+/* entire container, keeps perspective */
+.flip-container {
+  perspective: 1000px;
+  margin: auto;
+
+
+}
+  /* flip the pane when hovered */
+  .flip-container:hover .flipper, .flip-container.hover .flipper {
+    transform: rotateY(180deg);
+  }
+
+.flip-container, .front, .back {
+  width: 100%;
+  height: 400px;
+    margin: auto;
+}
+
+/* flip speed goes here */
+.flipper {
+  transition: 0.6s;
+  transform-style: preserve-3d;
+  position: relative;
+    margin: auto;
+}
+
+/* hide back of pane during swap */
+.front, .back {
+  backface-visibility: hidden;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* front pane, placed above back */
+.front {
+  z-index: 2;
+  /* for firefox 31 */
+  transform: rotateY(0deg);
+}
+
+/* back, initially hidden pane */
+.back {
+  transform: rotateY(180deg);
+  background-color: white;
+}
+
+
+
+
 

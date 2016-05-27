@@ -2,15 +2,17 @@
 	<div class="row">
 		
         
-        <div class="col-md-12">
-        <h4> Movies </h4>
+        <div class="col-md-10 col-centered">
+        <br>
+        <span class="my_title"> Movies :</span>
+        <br>
         <div class="table-responsive">
 
-                
-              <table id="mytable" class="table table-bordred table-striped">
+                <b>
+              <table id="mytable" class="table table-bordred table-striped" style="background-color:white;">
                    
-                   <thead>
-                   <th>Movie Title</th>
+                   <thead style="font-size:18px;color:#0000ff;">
+                   <th class="col-md-4" >Movie Title</th>
                     <th>In Stock</th>
                     <th>DVD Price</th>
                       <th>Edit</th>
@@ -18,7 +20,11 @@
                    </thead>
     <tbody>
     
-    <tr ng-repeat="movie in movies">
+    <tr dir-paginate="movie in movies | itemsPerPage: pageSize" current-page="currentPage">
+
+
+
+
     <td> {{ movie.Title }} </td>
         <td> {{ movie.InStock }} </td>
             <td> {{ movie.Price }} </td>
@@ -30,13 +36,33 @@
     </tbody>
         
 </table>
+</b>
+</div>
 
-<div class="clearfix"></div>
-<a class="btn btn-success " href="#AddMovie"> Add New Movie </a>
-<!-- Pagination -->
+<div>
+<a class="btn btn-primary btn-lg" href="#AddMovie"> Add New Movie </a>
+
+<span class="pull-right">
+                        <label style="color:white;" >Movies per page:</label>
+                        <input type="number" min="1" max="100" class="pagenumber" ng-model="pageSize">
+                </span>
+                        </div>  
+
+  </div>
+
+
                 
-            </div>
-            
-        </div>
+
+        <!-- Pagination -->
+<div class ="row"> <!-- div row 2-->
+    <div class="text-center">
+      <dir-pagination-controls boundary-links="true" on-page-change="pageChangeHandler(newPageNumber)"></dir-pagination-controls>
+  </div>
+
+
+</div> <!-- div row 2-->
+
+
+
 	</div>
 </div>

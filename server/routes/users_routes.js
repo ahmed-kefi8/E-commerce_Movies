@@ -50,7 +50,6 @@ router.put('/users/:id', function(req, res) {
       user[prop] = req.body[prop];
     }
 
-
     user.save(function (err) {
       if (!err) {
         console.log("user updated");

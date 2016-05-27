@@ -29,6 +29,7 @@ Movie_Store_App.controller('Res_PlannigController', ['$scope', '$timeout','Event
         var sEvent = findCalendarEvent(event);
         sEvent.start = event.start.toDate();
         sEvent.end = event.end.toDate();
+        sEvent.duration = moment(event.end.toDate()).diff(moment(event.start.toDate()), 'hours');
         // by making this dirty we tell uiCalendar to not send updates
         // to fullCalendar.
         sEvent.isDirty = true;

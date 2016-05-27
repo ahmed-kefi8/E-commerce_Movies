@@ -1,85 +1,142 @@
 <div class="container" id="product-section" ng-controller="Movie_detailController">
-  <div class="row">
+
+<h1 style="font-weight:bold;color:#990099;">{{ movie.Title }}</h1>
+
+  <tabs>
+    <pane title="Main">
+    <br>
+          <div class="col-md-6 "> <!--  col 1 -->
+ <img src="{{ movie.Poster }}" class="img-rounded img-responsive center2 " width="400" height="600"/>
+ <br>
+ </div>
+
 <div class="col-md-6">
- <img
-  src="{{ movie.Poster }}"
-  class="img-rounded img-responsive"
-  width="500" height="700"
- />
-</div>
-
-<div class="col-md-6">
- <div class="row">
-  <div class="col-md-12">
-   <h1 style="font-weight:bold;">{{ movie.Title }}</h1>
- </div>
-</div><!-- end row -->
-<div class="row">
- <div class="col-md-12">
-  <p class="description">
-  <ul>
-  <li>Runtime: {{movie.Runtime}}</li>
-  <li>Year: {{movie.Year}}</li>
-  <li>Realeased: {{movie.Released}}</li>
-   <li>imdb Rating: {{movie.imdbRating}}</li>
-  <li>Genre: {{movie.Genre}}</li>
-  <li>Director: {{movie.Director}}</li>
-  <li>Actors: {{movie.Actors}}</li>
-  <li>Plot: {{movie.Plot}}</li>
-  </ul>
-   
-  </p>
- </div>
-</div><!-- end row -->
-
-<div class="row">
- <div class="col-md-12 bottom-rule">
-  <h3 class="product-price"> In Stock : <span style="color:red;">{{movie.InStock}} DVD</span></h3>
-  <h2 class="product-price"> Price : <span style="color:red;">{{movie.Price | currency}}</span></h2>
- </div>
-</div><!-- end row -->
 
 
+<b>
+<table class="table" style="border-collapse: collapse;color:white;">
+
+      <tr>
+        <td class="col-md-2"> Genre:</td>
+        <td class="col-md-4">{{movie.Genre}}</td>
+      </tr>
+
+      <tr>
+        <td>Actors:</td>
+        <td>{{movie.Actors}}</td>
+      </tr>
+
+      <tr>
+        <td>Year:</td>
+        <td>{{movie.Year}}</td>
+      </tr>
+
+      <tr>
+        <td>imdb Rating:</td>
+        <td>{{movie.imdbRating}}</td>
+      </tr>
+
+      <tr>
+        <td>Runtime:</td>
+        <td>{{movie.Runtime}}</td>
+      </tr>
+
+      <tr>
+        <td>Released :</td>
+        <td>{{movie.Released}}</td>
+      </tr>
+
+      <tr>
+        <td>Director:</td>
+        <td>{{movie.Director}}</td>
+      </tr>
+
+      <tr>
+        <td>Plot:</td>
+        <td style="text-align: justify;">{{movie.Plot}}</td>
+      </tr>
+</table>
+<br><br>
+<table class="table" style="color:white">
+
+      <tr>
+        <td class="col-md-2">In Stock :</td>
+        <td class="col-md-4">{{movie.InStock}} DVD</td>
+      </tr>
+
+      <tr>
+        <td>Price :</td>
+        <td>{{movie.Price | currency}}</td>
+      </tr>
 
 
+      <tr>
+        <td style="padding-top:15px">Quantity :</td>
+        <td class="add-to-cart">
 
-<div class="row add-to-cart">
- <div class="col-md-5 product-qty">
-
-  <span class="btn btn-default btn-lg btn-qty" ng-click="removeQuantity()">
+  <span class="btn btn-default btn-lg btn-qty btn-danger" ng-click="removeQuantity()">
    <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
   </span>
 
   <input class="btn btn-default btn-lg btn-qty" ng-model="quantity" />
 
-  <span class="btn btn-default btn-lg btn-qty" ng-click="addQuantity()">
+  <span class="btn btn-default btn-lg btn-qty btn-primary" ng-click="addQuantity()">
    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
   </span>
 
- </div>
 
 
 
- <div class="col-md-6">
-<a href="" class="btn btn-info btn-lg" ng-click="addToCart(movie)" >
+<a href="" class="btn btn-info btn-lg pull-right" ng-click="addToCart(movie)" >
   <span class="glyphicon glyphicon-shopping-cart"></span> Add to Cart
 </a>
- </div>
-</div><!-- end row -->
-</br></br>
-<table class="table table-hover">
+
+        </td>
+      </tr>
+
+</table>
+</b>
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+    </pane>
+    <pane title="Trailer">
+    <br>
+      <span class="Premi_Res" style="color:white;">Watch {{ movie.Title }} Trailer : </span> <br><br>
+<div class="col-md-10 col-sm-12 col-xs-12 col-centered">
+<iframe  ng-src="{{movie.Preview_link}}" frameborder="0" width="720" height="400" allowfullscreen class="center2"></iframe>
+</div>
+    </pane>
+
+    <pane title="Projection Planning">
+    <br>
+    <span class="Premi_Res" style="color:white;">{{ movie.Title }} projection reservation :</span> <br><br>
+    <div class="col-md-10 col-sm-12 col-xs-12 col-centered">
+    <b>
+      <table class="table table-hover" style="background-color:white;">
   <thead>
-    <tr >
-      <span class="Premi_Res">Movie projection reservation</span>
-    </tr>
+
         <tr>
       <th>#</th>
       <th>Date</th>
       <th>Duration</th>
       <th>Booking</th>
     </tr>
+
   </thead>
   <tbody>
+
     <tr ng-repeat="event in movie_events">
       <th >{{-(events.length - $index - 1)}}</th>
       <td>{{event.start | date}}</td>
@@ -90,15 +147,20 @@
       </div>
       <div ng-if="event.state != 'free'">
       <span class="booked_Event">{{event.state}}</span>
+      <div ng-if="event.userId == loggeduser._id"><button type="button" class="btn btn-danger" ng-click="CancelEvent(event)">Cancel Booking</button></div>
       </div>
 
 
       </td>
     </tr>
+
   </tbody>
 </table>
+</b>
+<div ng-if="movie_events.length == 0" style="color:red;font-weight: bold;"> No Projection planned for {{ movie.Title }}</div>
+</div>
+    </pane>
+  </tabs>
 
 
-</div><!-- end row-->
-  </div><!-- end row -->
  </div><!-- end container --> 
