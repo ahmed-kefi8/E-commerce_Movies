@@ -8,6 +8,4 @@ cd into the app directory then :
 
 npm install
 
-bower install
-
 node server
