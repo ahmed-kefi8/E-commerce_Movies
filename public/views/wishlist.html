@@ -1,0 +1,82 @@
+<div class="container" ng-controller="WishListController">
+    <div class="row">
+ 
+        <div class="col-sm-10 col-md-10 col-centered">
+            <div ng-if="wishlist.length != 0">
+                <table class="table table-hover" style="background-color: white;">
+                    <thead>
+                        <tr>
+                            <th>Movies</th>
+                            <th class="text-center">Price</th>
+                            <th class="text-center">Remove</th>
+                            <th class="text-center">Add to Cart</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+
+                        <tr ng-repeat="movie in wishlist">
+
+                            <td class="col-sm-8 col-md-6">
+                                <div class="media ">
+                                    <div class="pull-left"> <img class="media-object" src="{{movie.Poster}}" width="100" height="100"> </div>
+                                    <div class="media-body">
+                                        <h4 class="media-heading"><a href="#">{{movie.Title}}</a></h4>
+                                        <h5 class="media-heading"> Actors : {{movie.Actors}} </h5>
+                                        <span>Genre: </span><span class="text-warning"><strong>{{movie.Genre}}</strong></span>
+                                        <h5 class="media-heading"> In Stock : {{movie.InStock}} </h5>
+                                    </div>
+                                </div></td>
+
+
+                          <td class="col-sm-1 col-md-1 text-center"><strong>{{movie.Price | currency}}</strong></td>
+                          <td class="col-sm-1 col-md-1">
+                            <button type="button" class="btn btn-danger" ng-click="deleteFromWishlist(movie)">
+                                <i class="fa fa-trash" aria-hidden="true"></i> Remove
+                            </button></td>
+
+                          <td class="col-sm-1 col-md-1">
+                            <button type="button" class="btn btn-primary" ng-click="addToCart(movie)">
+                                <i class="fa fa-cart-plus" aria-hidden="true"></i> Add to Cart
+                            </button></td>
+
+                        </tr> <!-- end ng-repeat -->
+                    </tbody>
+                </table>
+
+
+
+                                <button type="button" class="btn btn-info pull-right" ng-click="saveWishlit()">
+                                    <span class="glyphicon glyphicon-save"></span> Save your Wislist
+                                </button>  
+<br><br><br>
+                                <button type="button" class="btn btn-danger pull-right" ng-click="emptyWishlit()">
+                                    <span class="glyphicon glyphicon-trash"></span> Empty your Cart
+                                </button>
+
+                                <a href="#Movies" class="btn btn-default pull-right">
+                                    <span class="glyphicon glyphicon-shopping-cart"></span> Continue Shopping
+                                </a>
+
+
+
+
+
+            </div> <!-- full wishlist -->
+
+            <div ng-if="wishlist.length == 0" class ="text-center">
+
+                <img class="img-responsive center-block" src="assets\img\wishlist2.png" alt="Empty Wishlist">
+
+                <h1 class="emptyWishlist">Your Wishlist is Empty !</h1>
+
+<br>
+                <a href="#Movies" class="btn btn-default">
+                    <span class="glyphicon glyphicon-shopping-cart"></span> Go Shopping
+                </a>
+
+            </div>
+
+        </div>
+    </div>
+</div>

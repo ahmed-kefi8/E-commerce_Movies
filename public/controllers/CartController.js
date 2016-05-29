@@ -15,8 +15,6 @@ MovieFactory.get({ id: listItem.movie_id }, function(data) {
 $scope.movie = data;
 $scope.movie.quantityInCart = listItem.quantity;
 $rootScope.cart.push($scope.movie);
-
-
 });
 
 

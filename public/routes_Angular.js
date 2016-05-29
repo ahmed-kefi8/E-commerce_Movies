@@ -48,6 +48,18 @@
                 templateUrl : 'views/ManageUsers.html',
             })
 
+            .when('/wishlist', {
+                resolve: {
+                    "check": function($location, $rootScope){
+                        if(!$rootScope.loggeduser){
+                            $location.path('/signin');
+                            alert("You have to login to access your Wishlist");
+                        }
+                    }
+                },
+                templateUrl : 'views/wishlist.html',
+            })
+
             .when('/Movies', {
                 templateUrl : 'views/Movies.html',
             })
@@ -91,6 +103,19 @@
                     }
                 },
                 templateUrl : 'views/Cart.html',
+            })
+
+
+            .when('/wishlist/:_id', {
+                resolve: {
+                    "check": function($location, $rootScope){
+                        if(!$rootScope.loggeduser){
+                            $location.path('/signin');
+                            alert("You have to login to access your Wishlist");
+                        }
+                    }
+                },
+                templateUrl : 'views/wishlist.html',
             })
 
             .when('/Cart/:_id', {

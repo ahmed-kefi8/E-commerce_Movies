@@ -87,7 +87,30 @@ var bool = false;
 	}
 
 
+$scope.addToWishlist = function(movie){
+console.log($rootScope.loggeduser)
 
+
+var bool = false;
+
+	for(var i=0 ; i < $rootScope.wishlist.length ; i++)
+		{ if ($rootScope.wishlist[i]._id == movie._id)
+			{ bool = true; 
+				break;}
+		}
+
+	if(bool)
+		{alert("The movie : "+ movie.Title + " is already in your Wishlist !");}
+
+	else
+		{
+		$rootScope.loggeduser.wishlist.push(movie._id);
+
+		$location.path('/wishlist/'+$rootScope.loggeduser._id);
+
+		}
+
+	}
 
 
 
