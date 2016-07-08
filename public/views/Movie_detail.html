@@ -147,7 +147,7 @@
       </div>
       <div ng-if="event.state != 'free'">
       <span class="booked_Event">{{event.state}}</span>
-      <div ng-if="event.userId == loggeduser._id"><button type="button" class="btn btn-danger" ng-click="CancelEvent(event)">Cancel Booking</button></div>
+      <span ng-if="event.userId == loggeduser._id"><button type="button" class="btn btn-danger" ng-click="CancelEvent(event)">Cancel Booking</button></span>
       </div>
 
 

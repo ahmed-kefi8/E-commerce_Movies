@@ -132,7 +132,8 @@
         <div class="caption prod-caption">
             <div class="btn-group btn-group-justified">
                 <a class="btn btn-default price">{{ movie.Price | currency }}</a>
-                <a class="btn btn-primary" ng-click="addToCart(movie)"> Add to Cart <span class="glyphicon glyphicon-shopping-cart"></span> </a>
+                                <a class="btn btn-danger" ng-click="addToWishlist(movie)"> <i class="fa fa-heart" aria-hidden="true"></i></a>
+                <a class="btn btn-primary" ng-click="addToCart(movie)"> Add to <span class="glyphicon glyphicon-shopping-cart"></span> </a>
             </div>
         </div>
 

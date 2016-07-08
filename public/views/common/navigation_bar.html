@@ -1,45 +1,23 @@
 <br>
-
-
 <!-- La bar de navigation bootstrap-->
 <!-- navbar de couleur noir 'inverse' et fixée en haut de la page-->
 <nav class = "navbar navbar-costum navbar-static-top" ng-controller="authController" style="color: white">
 	<div class = "container" style="width:90%" >
-
-
 		<!-- Ajout de la marque du site le brand a gauche-->
 		<a href="#Home" class = "navbar-brand"> <img src="assets/img/logo9.png" height="60" width="50" class="logo-img img-rounded"> </a>
-
-		
 		<!-- Ajout d'un boutton pour rassembler les pages quand la fenêtre devient petite
 			le .navHeaderCollapse c'est comme un id pour cibler la div en question contenant la ul
 			qui elle méme contient les liens vers les différentes pages du site-->
 			<button class = "navbar-toggle" data-toggle = "collapse" data-target= ".navHeaderCollapse">
-
 				<!-- 3 petites barres pour dire qu'il ya un menu-->
 				<i class="fa fa-bars fa-lg" aria-hidden="true"></i>
-
 			</button>
-
 			<!-- la div pour contenir la ul des pages avec l'id 'navHeaderCollapse' pour la rendre déployable-->
 			<div class = "collapse navbar-collapse navHeaderCollapse">
-
-
 				<ul class="nav navbar-nav">
-				
-					
-			
-					
- 
-
-
-
 					<li class = "active cl-effect-14"><a href = "#Home"> Home </a></li>
-					
-
-
 					<li class="dropdown" ng-if=" loggeduser && loggeduser.role == 'admin'">
-						 <a class="dropdown-toggle cl-effect-14" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href = ""> Admin <span class="caret"></span></a>
+						<a class="dropdown-toggle cl-effect-14" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href = ""> Admin <span class="caret"></span></a>
 						<ul class="dropdown-menu navbar-nav navbar-costum ">
 							<li ><a href="#ManageMovies">  Manage Movies</a></li>
 							<li role="separator" class="divider"></li>
@@ -48,72 +26,39 @@
 							<li ><a href="#ReservationPlanning">Projection Planning</a></li>
 						</ul>
 					</li>
-
-
-
-
 					<li class="cl-effect-14"><a href = "#Movies"> Movies </a></li>
 					<li class="cl-effect-14"><a href = "#Categories"> Categories </a></li>
-				
 					<li class="cl-effect-14"><a href = "#Chat"><i class="fa fa-weixin" ></i> Chat </a></li>
-
-
-
-
-
-						<li class="cl-effect-14" ng-if="!loggeduser"><a href = "#Cart"> <span class="glyphicon glyphicon-shopping-cart"></span>
-							0 items $0.00 
-						</a>
-					</li>
-					<li class="cl-effect-14" ng-if="!loggeduser"><a href = "#wishlist"><i class="fa fa-heart" aria-hidden="true"></i> Wishlist </a></li>
-
-
-
-
-
-
-
-
-
-
-
-
-	<li class="cl-effect-14"><a href = "#About_US"> About US </a></li>
-				</ul>
-
-
-
-				<div ng-if="!loggeduser">
-					<!-- finalement notre ul poussser à droite avec les liens des pages -->
-					<ul class = "nav navbar-nav navbar-right cl-effect-14">
-						<li><a href="#signup"><i class="fa fa-user-plus fa-lg" aria-hidden="true"></i> Sign Up</a></li>
-						<li><a href="#signin"><i class="fa fa-sign-in fa-lg" aria-hidden="true"></i> Login</a></li>    
-					</ul>
-				</div>
-
-				<div ng-if="loggeduser">
-
-					<ul class = "nav navbar-nav navbar-right cl-effect-14">
-					<li class = "username2 profilepic" ng-if="!loggeduser.photo"> {{loggeduser.username}} </li>
-					<li class = "profilepic" ng-if="loggeduser.photo"> <img class="img-rounded" src="{{loggeduser.photo}}" height="50" width="50"> </li> 
-
-<li ><a href = "#MyProfile"><i class="fa fa-user fa-lg" aria-hidden="true"></i> Profile </a></li>
-
-<li ng-controller="WishListController"><a href = "#wishlist"><i class="fa fa-heart" aria-hidden="true"></i> Wishlist </a></li>
-
-						<li ng-controller="CartController" ><a href = "#Cart"> <span class="glyphicon glyphicon-shopping-cart"></span>
-							{{ TotalItems() }} <ng-pluralize count="TotalItems()" when="{1: 'item', 'other':'items'}"></ng-pluralize> {{ Total() + 6.94  | currency }}
-						</a>
-					</li>
-
-
-					<li><a href="#Home" ng-click="logout()"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+					<li class="cl-effect-14" ng-if="!loggeduser"><a href = "#Cart"> <span class="glyphicon glyphicon-shopping-cart"></span>
+						0 items $0.00 
+					</a>
+				</li>
+				<li class="cl-effect-14" ng-if="!loggeduser"><a href = "#wishlist"><i class="fa fa-heart" aria-hidden="true"></i> Wishlist </a></li>
+				<li class="cl-effect-14"><a href = "#About_US"> About US </a></li>
+			</ul>
+			<div ng-if="!loggeduser">
+				<!-- finalement notre ul poussser à droite avec les liens des pages -->
+				<ul class = "nav navbar-nav navbar-right cl-effect-14">
+					<li><a href="#signup"><i class="fa fa-user-plus fa-lg" aria-hidden="true"></i> Sign Up</a></li>
+					<li><a href="#signin"><i class="fa fa-sign-in fa-lg" aria-hidden="true"></i> Login</a></li>    
 				</ul>
 			</div>
-
+			<div ng-if="loggeduser">
+				<ul class = "nav navbar-nav navbar-right cl-effect-14">
+					<li class = "username2 profilepic" ng-if="!loggeduser.photo"> {{loggeduser.username}} </li>
+					<li class = "profilepic" ng-if="loggeduser.photo"> <img class="img-rounded" src="{{loggeduser.photo}}" height="50" width="50"> </li> 
+					<li ><a href = "#MyProfile"><i class="fa fa-user fa-lg" aria-hidden="true"></i> Profile </a></li>
+					<li ng-controller="WishListController"><a href = "#wishlist"><i class="fa fa-heart" aria-hidden="true"></i> Wishlist </a></li>
+					<li ng-controller="CartController" ><a href = "#Cart"> <span class="glyphicon glyphicon-shopping-cart"></span>
+						{{ TotalItems() }} <ng-pluralize count="TotalItems()" when="{1: 'item', 'other':'items'}"></ng-pluralize> {{ Total() + 6.94  | currency }}
+					</a>
+				</li>
+				<li><a href="#Home" ng-click="logout()"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+			</ul>
 		</div>
-
 	</div>
+	<span class="pull-right"> <audio controls="controls" autoplay="autoplay"><source src="assets/Gladiator.mp3" type="audio/mpeg" /></audio></span>
+</div>
 </nav>
 
 

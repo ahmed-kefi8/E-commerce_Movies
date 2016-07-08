@@ -1,41 +1,28 @@
 Movie_Store_App.controller('Res_PlannigController', ['$scope', '$timeout','EventFactory','$cookies','$q','$compile','uiCalendarConfig','$rootScope','$location','$route','MovieFactory', function ($scope, $timeout, EventFactory, $cookies, $q,$compile,uiCalendarConfig,$rootScope,$location,$route,MovieFactory) {
 
-
-
-
-
-
-
-
     $scope.eventSources = [$rootScope.evt];
-  
     $scope.movies = MovieFactory.query();
     $scope.addEvent = function(event){
-
-    event.state = "free";
-    event.duration = moment(event.end).diff(moment(event.start), 'hours');
-    event.url='';
-    event.movie_title = $scope.mve.Title;
-    event.movie_id = $scope.mve._id;
-    EventFactory.save($scope.event);
-    $rootScope.evt.push(event);
-    $route.reload()
+        event.state = "free";
+        event.duration = moment(event.end).diff(moment(event.start), 'hours');
+        event.url='';
+        event.movie_title = $scope.mve.Title;
+        event.movie_id = $scope.mve._id;
+        EventFactory.save($scope.event);
+        $rootScope.evt.push(event);
+        $route.reload()
     };
-
     
     $scope.alertEvent = function (event, jsEvent, ui, view) {
         
         $timeout(function() {
-        var sEvent = findCalendarEvent(event);
-        sEvent.start = event.start.toDate();
-        sEvent.end = event.end.toDate();
-        sEvent.duration = moment(event.end.toDate()).diff(moment(event.start.toDate()), 'hours');
-        // by making this dirty we tell uiCalendar to not send updates
-        // to fullCalendar.
-        sEvent.isDirty = true;
+            var sEvent = findCalendarEvent(event);
+            sEvent.start = event.start.toDate();
+            sEvent.end = event.end.toDate();
+            sEvent.duration = moment(event.end.toDate()).diff(moment(event.start.toDate()), 'hours');
+            sEvent.isDirty = true;
         });
     };
-
 
     function findCalendarEvent(event) {
         
@@ -47,9 +34,7 @@ Movie_Store_App.controller('Res_PlannigController', ['$scope', '$timeout','Event
                 }
             }
         }
-        
     };
-
 
     $scope.calendarConfig = {
         calendar: {
@@ -67,6 +52,4 @@ Movie_Store_App.controller('Res_PlannigController', ['$scope', '$timeout','Event
             eventDragStop: $scope.alertEvent
         }
     };
-
-
 }]);

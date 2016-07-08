@@ -21,7 +21,7 @@
                                 <div class="media ">
                                     <div class="pull-left"> <img class="media-object" src="{{movie.Poster}}" width="100" height="100"> </div>
                                     <div class="media-body">
-                                        <h4 class="media-heading"><a href="#">{{movie.Title}}</a></h4>
+                                        <h4 class="media-heading"><a href="#/Movie_detail/{{movie._id}}">{{movie.Title}}</a></h4>
                                         <h5 class="media-heading"> Actors : {{movie.Actors}} </h5>
                                         <span>Genre: </span><span class="text-warning"><strong>{{movie.Genre}}</strong></span>
                                         <h5 class="media-heading"> In Stock : {{movie.InStock}} </h5>
@@ -51,7 +51,7 @@
                                 </button>  
 <br><br><br>
                                 <button type="button" class="btn btn-danger pull-right" ng-click="emptyWishlit()">
-                                    <span class="glyphicon glyphicon-trash"></span> Empty your Cart
+                                    <span class="glyphicon glyphicon-trash"></span> Empty your Wislist
                                 </button>
 
                                 <a href="#Movies" class="btn btn-default pull-right">

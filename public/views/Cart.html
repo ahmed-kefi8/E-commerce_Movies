@@ -14,15 +14,13 @@
                         </tr>
                     </thead>
                     <tbody>
-
-
                         <tr ng-repeat="movie in cart">
 
                             <td class="col-sm-8 col-md-6">
                                 <div class="media ">
                                     <div class="pull-left"> <img class="media-object" src="{{movie.Poster}}" width="100" height="100"> </div>
                                     <div class="media-body">
-                                        <h4 class="media-heading"><a href="#">{{movie.Title}}</a></h4>
+                                        <h4 class="media-heading"><a href="#/Movie_detail/{{movie._id}}">{{movie.Title}}</a></h4>
                                         <h5 class="media-heading"> Actors : {{movie.Actors}} </h5>
                                         <span>Genre: </span><span class="text-warning"><strong>{{movie.Genre}}</strong></span>
                                         <h5 class="media-heading"> In Stock : {{movie.InStock}} </h5>
@@ -64,23 +62,63 @@
                             <td>   </td>
                             <td>   </td>
                             <td>   </td>
-                            <td><h5>Estimated shipping</h5></td>
-                            <td class="text-right"><h5><strong>$6.94</strong></h5></td>
+                            <td><h5> Shipping and handling </h5></td>
+                            <td class="text-right"><h5><strong>{{ TotalItems() | currency}}</strong></h5></td>
                         </tr>
                         <tr>
                             <td>   </td>
                             <td>   </td>
                             <td>   </td>
                             <td><h3>Total</h3></td>
-                            <td class="text-right"><h3><strong>{{ Total() + 6.94 | currency}}</strong></h3></td>
+                            <td class="text-right"><h3><strong>{{ Total() + TotalItems() | currency}}</strong></h3></td>
                         </tr>
 
                     </tbody>
                 </table>
 
-                                <button type="button" class="btn btn-success pull-right" ng-click="order()">
-                                    <span class="glyphicon glyphicon-play"></span> Order Now
-                                </button>
+
+
+<div class = "pull-right">
+<form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post" >
+<input type="hidden" name="cmd" value="_cart">
+<input type="hidden" name="business" value="5B9VRC368G7GE">
+<input type="hidden" name="lc" value="US">
+<input type="hidden" name="upload" value="1">
+
+
+
+
+<div ng-repeat="movie in cart">
+<input type="hidden" name="item_name_{{$index+1}}" value="{{movie.Title}}">
+
+ <input type="hidden" name="amount_{{$index+1}}" value="{{movie.Price}}">
+<input type="hidden" name="quantity_{{$index+1}}" value="{{movie.quantityInCart}}">
+</div>
+
+
+
+
+<input type="hidden" name="currency_code" value="USD">
+<input type="hidden" name="button_subtype" value="products">
+<input type="hidden" name="no_note" value="1">
+
+<input type="hidden" name="shipping" value="{{TotalItems()}}">
+<input type="hidden" name="shipping2" value="{{TotalItems()}}">
+<input type="hidden" name="handling_cart" value="{{TotalItems()}}">
+
+<input type="hidden" name="bn" value="PP-ShopCartBF:btn_cart_LG.gif:NonHosted">
+<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+</form>
+</div>
+
+
+
+
+
+
+
+
 
                                 <button type="button" class="btn btn-info pull-right" ng-click="saveCart()">
                                     <span class="glyphicon glyphicon-save"></span> Save your Cart

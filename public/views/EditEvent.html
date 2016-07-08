@@ -1,44 +1,39 @@
 <div class ="container" ng-controller="AdminEventsController">
   <div class="row">
-    
-        
-         <div class="col-md-10 col-centered">
-        <br>
-        <span class="Premi_Res"> Edit: ~ {{ev.title}} ~ </span>
-        <br><br>
-        <div class="table-responsive">
+   <div class="col-md-10 col-centered">
+    <br>
+    <span class="my_title"> Edit: ~ {{ev.title}} ~ </span>
+    <br><br>
+    <div class="table-responsive">
+        <b>
+          <table id="mytable" class="table table-bordred table-striped" style="background-color:white;">    
+            <tbody>
+                
+                <tr>
+                    <td style="vertical-align:middle;"> Event Title :</td>
+                    <td> <input type="text" ng-model="ev.title" size="50" class="myInputText"> </td>
+                </tr>
 
-<b>
-              <table id="mytable" class="table table-bordred">
-                   
-    <tbody>
-    
-    <tr>
-    <td style="vertical-align:middle;"> Event Title :</td>
-    <td> <input type="text" ng-model="ev.title" size="50" class="myInputText"> </td>
-    </tr>
+                <tr>
+                    <td style="vertical-align:middle;"> Movie :</td>
+                    <td> <input type="text" ng-model="ev.movie_title" size="50" class="myInputText"> </td>
+                </tr>
 
-    <tr>
-    <td style="vertical-align:middle;"> Movie :</td>
-    <td> <input type="text" ng-model="ev.movie_title" size="50" class="myInputText"> </td>
-    </tr>
+                <tr>
+                    <td style="vertical-align:middle;"> Start Date :</td>
+                    <td> <input type="datetime-local" ng-model="ev.start" size="80" class="myInputText"> </td>
+                </tr>
 
-    <tr>
-    <td style="vertical-align:middle;"> Start Date :</td>
-    <td> <input type="datetime-local" ng-model="ev.start" size="80" class="myInputText"> </td>
-    </tr>
+                <tr>
+                    <td style="vertical-align:middle;"> End Date :</td>
+                    <td> <input type="datetime-local" ng-model="ev.end" size="80" class="myInputText"> </td>
+                </tr>
 
-    <tr>
-    <td style="vertical-align:middle;"> End Date :</td>
-    <td> <input type="datetime-local" ng-model="ev.end" size="80" class="myInputText"> </td>
-    </tr>
-
-    </tbody>
-        
-</table>
-</b>
-<button type="submit" class="btn btn-success" ng-click="updateEvent()">Save</button>
-
+            </tbody>
+            
+        </table>
+    </b>
+    <button type="submit" class="btn btn-success" ng-click="updateEvent()">Save</button>
 </div>
 </div>
 </div>

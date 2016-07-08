@@ -1,29 +1,15 @@
 Movie_Store_App.controller('CartController',['$q','$scope','$cookies','MovieFactory','UserFactory','$rootScope','$location', function($q, $scope, $cookies, MovieFactory, UserFactory, $rootScope,$location){
 
-
-
-
 $rootScope.cart = [];
-
-
 $rootScope.loggeduser.cart.forEach(function(listItem, index){
-
-
-
 MovieFactory.get({ id: listItem.movie_id }, function(data) {
-
 $scope.movie = data;
 $scope.movie.quantityInCart = listItem.quantity;
 $rootScope.cart.push($scope.movie);
 });
-
-
 });
 
-
-
 $scope.addQuantity = function(movie_id){
-
 	for(var i=0 ; i < $rootScope.cart.length ; i++)
 	{
 		if ($rootScope.cart[i]._id == movie_id )
@@ -34,15 +20,11 @@ $scope.addQuantity = function(movie_id){
 				{$rootScope.cart[i].quantityInCart ++;
 				 $rootScope.loggeduser.cart[i].quantity = $rootScope.cart[i].quantityInCart;}
 			break;
-
 			}
 	}
 }
 
-
-
 $scope.removeQuantity = function(movie_id){
-
 for(var i=0 ; i < $rootScope.cart.length ; i++)
 	{
 		if ($rootScope.cart[i]._id == movie_id && $rootScope.cart[i].quantityInCart > 1)
@@ -51,9 +33,6 @@ for(var i=0 ; i < $rootScope.cart.length ; i++)
 			break;}
 	}
 }
-
-
-
 
 $scope.Total =  function(){
 var sum =0;
@@ -68,10 +47,7 @@ if ($rootScope.cart.length == 0)
 
 return sum;
 
-
-
 }
-
 
 $scope.TotalItems =  function(){
 var sumItems = 0;
@@ -80,11 +56,8 @@ for (var i=0 ; i <$rootScope.cart.length ; i++)
 sumItems += parseInt($rootScope.cart[i].quantityInCart);
 
 }
-
-
 return sumItems;
 	}
-
 
 $scope.deleteFromCart = function(movie){
 	$rootScope.cart.splice($rootScope.cart.indexOf(movie), 1);
@@ -95,16 +68,7 @@ for(var i=0; i<$rootScope.loggeduser.cart.length ; i++)
 		{ $rootScope.loggeduser.cart.splice(i, 1);
 		  break;}
 }
-
-
-
-	//UserFactory.update($rootScope.loggeduser);
-
-
 }
-
-
-
 $scope.emptyCart = function(){
 	$rootScope.cart = [];
 	$rootScope.loggeduser.cart = [];
